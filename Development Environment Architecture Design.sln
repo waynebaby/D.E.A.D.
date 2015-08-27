@@ -103,6 +103,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.ServiceAndRemoting", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.ServiceAndRemoting.Interfaces", "Ideal Design\Technical Packages (Crosscutting)\DEAD.ServiceAndRemoting.Interfaces\DEAD.ServiceAndRemoting.Interfaces.csproj", "{047CF6E3-E5E6-4920-A05A-77D9A6E995D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Models", "Ideal Design\Development Projects\SampleMyBusinessSolution1.Models\SampleMyBusinessSolution1.Models.csproj", "{A1DA14E8-F3C8-4FB0-8D17-976FDB09F08A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Models.Mapping", "Ideal Design\Development Projects\SampleMyBusinessSolution1.Models.Mapping\SampleMyBusinessSolution1.Models.Mapping.csproj", "{E33E73D8-AD5A-4F5F-9734-F602CA36082B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Contracts", "Ideal Design\Development Projects\SampleMyBusinessSolution1.Contracts\SampleMyBusinessSolution1.Contracts.csproj", "{74460E65-1748-4ABA-B352-DF96548A77DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Services", "Ideal Design\Development Projects\SampleMyBusinessSolution1.Services\SampleMyBusinessSolution1.Services.csproj", "{567C1E1D-9DC5-4E4F-991C-A5909D9F7390}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +169,22 @@ Global
 		{047CF6E3-E5E6-4920-A05A-77D9A6E995D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{047CF6E3-E5E6-4920-A05A-77D9A6E995D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{047CF6E3-E5E6-4920-A05A-77D9A6E995D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1DA14E8-F3C8-4FB0-8D17-976FDB09F08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1DA14E8-F3C8-4FB0-8D17-976FDB09F08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1DA14E8-F3C8-4FB0-8D17-976FDB09F08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1DA14E8-F3C8-4FB0-8D17-976FDB09F08A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E33E73D8-AD5A-4F5F-9734-F602CA36082B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E33E73D8-AD5A-4F5F-9734-F602CA36082B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E33E73D8-AD5A-4F5F-9734-F602CA36082B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E33E73D8-AD5A-4F5F-9734-F602CA36082B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74460E65-1748-4ABA-B352-DF96548A77DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74460E65-1748-4ABA-B352-DF96548A77DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74460E65-1748-4ABA-B352-DF96548A77DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74460E65-1748-4ABA-B352-DF96548A77DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{567C1E1D-9DC5-4E4F-991C-A5909D9F7390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{567C1E1D-9DC5-4E4F-991C-A5909D9F7390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{567C1E1D-9DC5-4E4F-991C-A5909D9F7390}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{567C1E1D-9DC5-4E4F-991C-A5909D9F7390}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -213,5 +237,9 @@ Global
 		{DFDC970D-8287-4A38-A235-5DF76B22554B} = {00B9AF72-E40D-4F31-9049-E4E83E2F09D4}
 		{2CFA768E-D42E-4A4E-BC60-BCB107992CB4} = {18A10247-84EB-45E4-8496-4B5F306E9E67}
 		{047CF6E3-E5E6-4920-A05A-77D9A6E995D3} = {A5D2662E-5AA1-42D8-BC3B-397B0496DD8F}
+		{A1DA14E8-F3C8-4FB0-8D17-976FDB09F08A} = {55BB80A5-A51E-47BD-87A1-AAAA294AB14C}
+		{E33E73D8-AD5A-4F5F-9734-F602CA36082B} = {7EC46F39-4A69-4E5C-B98D-9B6F035BBDAB}
+		{74460E65-1748-4ABA-B352-DF96548A77DD} = {78D17719-AE72-4831-81ED-DB4CEEDB485F}
+		{567C1E1D-9DC5-4E4F-991C-A5909D9F7390} = {E1C02FD3-FA11-4981-8CA2-12EE0BBE1437}
 	EndGlobalSection
 EndGlobal
