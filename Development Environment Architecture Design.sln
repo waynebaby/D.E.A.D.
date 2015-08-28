@@ -61,7 +61,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Clients", "3.Clients", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Windows Desktop", "0.Windows Desktop", "{4A68D82F-7A91-4BC9-ADFF-CE4F20DA6996}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Wjndows Universal App", "1.Wjndows Universal App", "{3E5D0322-F4CC-44B7-929E-9D6ED1FFA3F1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Windows Universal App", "1.Windows Universal App", "{3E5D0322-F4CC-44B7-929E-9D6ED1FFA3F1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Android", "2.Android", "{CA3A3744-0BD1-4B92-9AA2-C48E0B95C23B}"
 EndProject
@@ -110,6 +110,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Contracts", "Ideal Design\Development Projects\SampleMyBusinessSolution1.Contracts\SampleMyBusinessSolution1.Contracts.csproj", "{74460E65-1748-4ABA-B352-DF96548A77DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Services", "Ideal Design\Development Projects\SampleMyBusinessSolution1.Services\SampleMyBusinessSolution1.Services.csproj", "{567C1E1D-9DC5-4E4F-991C-A5909D9F7390}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.BatchJobWindowsService", "Ideal Design\Development Projects\SampleMyBusinessSolution1.BatchJobWindowsService\SampleMyBusinessSolution1.BatchJobWindowsService.csproj", "{39FA830B-AFFC-4319-BA5F-95E3F4880ECC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Portal", "Ideal Design\Development Projects\SampleMyBusinessSolution1.Portal\SampleMyBusinessSolution1.Portal.csproj", "{6265E0DD-D763-4F01-9D20-0C92E671664C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Portal.Tests", "SampleMyBusinessSolution1.Portal.Tests\SampleMyBusinessSolution1.Portal.Tests.csproj", "{405B4299-8027-4A44-9192-560A047B20E9}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SampleMyBusinessSolution1.MainDatabase", "Ideal Design\Development Projects\SampleMyBusinessSolution1.MainDatabase\SampleMyBusinessSolution1.MainDatabase.sqlproj", "{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -185,6 +193,24 @@ Global
 		{567C1E1D-9DC5-4E4F-991C-A5909D9F7390}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{567C1E1D-9DC5-4E4F-991C-A5909D9F7390}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{567C1E1D-9DC5-4E4F-991C-A5909D9F7390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39FA830B-AFFC-4319-BA5F-95E3F4880ECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39FA830B-AFFC-4319-BA5F-95E3F4880ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39FA830B-AFFC-4319-BA5F-95E3F4880ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39FA830B-AFFC-4319-BA5F-95E3F4880ECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6265E0DD-D763-4F01-9D20-0C92E671664C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6265E0DD-D763-4F01-9D20-0C92E671664C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6265E0DD-D763-4F01-9D20-0C92E671664C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6265E0DD-D763-4F01-9D20-0C92E671664C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{405B4299-8027-4A44-9192-560A047B20E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405B4299-8027-4A44-9192-560A047B20E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405B4299-8027-4A44-9192-560A047B20E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405B4299-8027-4A44-9192-560A047B20E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -241,5 +267,9 @@ Global
 		{E33E73D8-AD5A-4F5F-9734-F602CA36082B} = {7EC46F39-4A69-4E5C-B98D-9B6F035BBDAB}
 		{74460E65-1748-4ABA-B352-DF96548A77DD} = {78D17719-AE72-4831-81ED-DB4CEEDB485F}
 		{567C1E1D-9DC5-4E4F-991C-A5909D9F7390} = {E1C02FD3-FA11-4981-8CA2-12EE0BBE1437}
+		{39FA830B-AFFC-4319-BA5F-95E3F4880ECC} = {A3F6A713-9903-4C14-9D44-19015967C0F5}
+		{6265E0DD-D763-4F01-9D20-0C92E671664C} = {E4203FE1-0F2D-4B98-8859-6CA5C31EC74D}
+		{405B4299-8027-4A44-9192-560A047B20E9} = {E4203FE1-0F2D-4B98-8859-6CA5C31EC74D}
+		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE} = {20A0981D-853F-4648-9E77-74F8FBB349E5}
 	EndGlobalSection
 EndGlobal
