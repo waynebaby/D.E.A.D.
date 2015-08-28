@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{047cf6e3-e5e6-4920-a05a-77d9a6e995d3}</ProjectGuid>
+    <ProjectGuid>{306D2CB1-A1ED-4D8E-B3B8-9776297F3E1D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DEAD.ServiceAndRemoting.Interfaces</RootNamespace>
-    <AssemblyName>DEAD.ServiceAndRemoting.Interfaces</AssemblyName>
+    <RootNamespace>DEAD.Logging.Interfaces</RootNamespace>
+    <AssemblyName>DEAD.Logging.Interfaces</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -48,5 +45,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
 </Project>

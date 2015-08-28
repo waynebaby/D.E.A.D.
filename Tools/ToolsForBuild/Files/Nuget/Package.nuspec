@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id></id>
+    <version></version>
+    <title></title>
+    <authors>DEAD Team</authors>
+    <owners>DEAD Team</owners>
+    <projectUrl>http://DEAD</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    这是一般的介绍  我们可以修改 Tooles for build 来填写这些介绍
+    </description>
+    <summary>                      
+    </summary>
+    <releaseNotes>
+    </releaseNotes>
+    <tags>Rx Reactive Extensions MVVM Win8 Metro Modern UI</tags>
+    <dependencies>
+
+      <dependency id="Microsoft.Bcl" version="[1.1.10,100.0)" />
+      <dependency id="Microsoft.Bcl.Async" version="[1.0.168,100.0)" />
+      <dependency id="Microsoft.Bcl.Build" version="[1.0.21,100.0)" />
+      <!--<group targetFramework="net45">
+        <dependency id="Microsoft.Bcl" version="[1.1.10,100.0)" />
+        <dependency id="Microsoft.Bcl.Async" version="[1.0.168,100.0)" />
+        <dependency id="Microsoft.Bcl.Build" version="[1.0.21,100.0)" />
+        <dependency id="Rx-Core" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Interfaces" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Linq" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Main" version="[2.2.5,100.0)" />
+        <dependency id="Rx-PlatformServices" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Xaml" version="[2.2.5,100.0)" />
+        <dependency id="Unity" version="[3.5.1404,100.0)" />
+      </group>
+      <group targetFramework="wpa81">
+        <dependency id="CommonServiceLocator" version="[1.3,100.0)" />
+        <dependency id="Microsoft.Bcl" version="[1.1.10,100.0)" />
+        <dependency id="Microsoft.Bcl.Async" version="[1.0.168,100.0)" />
+        <dependency id="Microsoft.Bcl.Build" version="[1.0.21,100.0)" />
+        <dependency id="Rx-Core" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Interfaces" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Linq" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Main" version="[2.2.5,100.0)" />
+        <dependency id="Rx-PlatformServices" version="[2.2.5,100.0)" />
+        <dependency id="Unity" version="[3.5.1405-prerelease,100.0)" />
+      </group>
+      <group targetFramework="sl5">
+        <dependency id="CommonServiceLocator" version="[1.3.0,100.0)" />
+        <dependency id="Microsoft.Bcl" version="[1.1.10,100.0)" />
+        <dependency id="Microsoft.Bcl.Async" version="[1.0.168,100.0)" />
+        <dependency id="Microsoft.Bcl.Build" version="[1.0.21,100.0)" />
+        <dependency id="Rx-Core" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Interfaces" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Linq" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Main" version="[2.2.5,100.0)" />
+        <dependency id="Rx-PlatformServices" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Xaml" version="[2.2.5,100.0)" />
+        <dependency id="Unity" version="[2.1.505.2,100.0)" />
+      </group>
+      <group targetFramework="wp8">
+        <dependency id="Microsoft.Bcl" version="[1.1.10,100.0)" />
+        <dependency id="Microsoft.Bcl.Async" version="[1.0.168,100.0)" />
+        <dependency id="Microsoft.Bcl.Build" version="[1.0.21,100.0)" />
+        <dependency id="Rx-Core" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Interfaces" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Linq" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Main" version="[2.2.5,100.0)" />
+        <dependency id="Rx-PlatformServices" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Xaml" version="[2.2.5,100.0)" />
+        <dependency id="Unity" version="[3.5.1404,100.0)" />
+      </group>
+      <group targetFramework="net4">
+        <dependency id="CommonServiceLocator" version="[1.3.0,100.0)" />
+        <dependency id="Microsoft.Bcl" version="[1.1.10,100.0)" />
+        <dependency id="Microsoft.Bcl.Async" version="[1.0.168,100.0)" />
+        <dependency id="Microsoft.Bcl.Build" version="[1.0.21,100.0)" />
+        <dependency id="Rx-Core" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Interfaces" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Linq" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Main" version="[2.2.5,100.0)" />
+        <dependency id="Rx-PlatformServices" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Xaml" version="[2.2.5,100.0)" />
+        <dependency id="Unity" version="[2.1.505.2,100.0)" />
+      </group>
+      <group targetFramework="win81">
+        <dependency id="CommonServiceLocator" version="[1.3.0,100.0)" />
+        <dependency id="Microsoft.Bcl" version="[1.1.10,100.0)" />
+        <dependency id="Microsoft.Bcl.Async" version="[1.0.168,100.0)" />
+        <dependency id="Microsoft.Bcl.Build" version="[1.0.21,100.0)" />
+        <dependency id="Rx-Core" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Interfaces" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Linq" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Main" version="[2.2.5,100.0)" />
+        <dependency id="Rx-PlatformServices" version="[2.2.5,100.0)" />
+        <dependency id="Rx-Xaml" version="[2.2.5,100.0)" />
+        <dependency id="Unity" version="[3.5.1404,100.0)" />
+      </group>-->
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\" target="tools" />
+    <file src="content\" target="content" />
+    <file src="src\" target="src" />
+    <file src="lib\" target="lib" />
+  </files>
+</package>

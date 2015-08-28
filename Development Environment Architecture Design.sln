@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ideal Design", "Ideal Desig
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{64780C2F-D210-4DE0-976C-EF5884DA75D3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Technical Packages (Crosscutting)", "0.Technical Packages (Crosscutting)", "{273B7DA4-E088-481F-BAF9-07C40F4AD846}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Technical Packages", "0.Technical Packages", "{273B7DA4-E088-481F-BAF9-07C40F4AD846}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Business Development Projects", "1.Business Development Projects", "{F9F5124D-D946-465E-A11A-538D3D08409A}"
 EndProject
@@ -77,31 +77,34 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildMe", "Tools\BuildMe\Bu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "97.TestingGround", "97.TestingGround", "{8355519D-BC4A-4BF0-AD88-AD26300E5900}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Common.Interfaces", "Ideal Design\Technical Packages (Crosscutting)\DEAD.Common.Interfaces\DEAD.Common.Interfaces.csproj", "{B73963F3-5B0F-48D1-899D-C45141FCBAE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Common.Interfaces", "Ideal Design\Technical Packages\DEAD.Common.Interfaces\DEAD.Common.Interfaces.csproj", "{B73963F3-5B0F-48D1-899D-C45141FCBAE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Common", "Ideal Design\Technical Packages (Crosscutting)\DEAD.Common\DEAD.Common.csproj", "{DED0684E-1D51-45D4-8D34-DA48E8389031}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Common", "Ideal Design\Technical Packages\DEAD.Common\DEAD.Common.csproj", "{DED0684E-1D51-45D4-8D34-DA48E8389031}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Dependency Injection", "1.Dependency Injection", "{95358526-EE23-4483-B3F4-4B3FF89BBAEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.DependencyInjection", "Ideal Design\Technical Packages (Crosscutting)\DEAD.DependencyInjection\DEAD.DependencyInjection.csproj", "{423357CE-426D-4EC5-BF94-7258DF61263B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.DependencyInjection", "Ideal Design\Technical Packages\DEAD.DependencyInjection\DEAD.DependencyInjection.csproj", "{423357CE-426D-4EC5-BF94-7258DF61263B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.DependencyInjection.Interfaces", "Ideal Design\Technical Packages (Crosscutting)\DEAD.DependencyInjection.Interfaces\DEAD.DependencyInjection.Interfaces.csproj", "{62D803A8-8E2B-47AA-81C2-954D77F9F3CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.DependencyInjection.Interfaces", "Ideal Design\Technical Packages\DEAD.DependencyInjection.Interfaces\DEAD.DependencyInjection.Interfaces.csproj", "{62D803A8-8E2B-47AA-81C2-954D77F9F3CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.DomainPatterns", "Ideal Design\Technical Packages (Crosscutting)\DEAD.DomainPatterns\DEAD.DomainPatterns.csproj", "{501562A8-5A70-433B-9316-F5B47DB5991B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.DomainPatterns", "Ideal Design\Technical Packages\DEAD.DomainPatterns\DEAD.DomainPatterns.csproj", "{501562A8-5A70-433B-9316-F5B47DB5991B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.DomainPatterns.Interfaces", "Ideal Design\Technical Packages (Crosscutting)\DEAD.DomainPatterns.Interfaces\DEAD.DomainPatterns.Interfaces.csproj", "{CDC9089F-2694-44EB-9E1B-7B774B3669D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.DomainPatterns.Interfaces", "Ideal Design\Technical Packages\DEAD.DomainPatterns.Interfaces\DEAD.DomainPatterns.Interfaces.csproj", "{CDC9089F-2694-44EB-9E1B-7B774B3669D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Caching", "Ideal Design\Technical Packages (Crosscutting)\DEAD.Caching\DEAD.Caching.csproj", "{BCB4ED31-6F10-4356-86F2-3839192A5D2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Caching", "Ideal Design\Technical Packages\DEAD.Caching\DEAD.Caching.csproj", "{BCB4ED31-6F10-4356-86F2-3839192A5D2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Caching.Interfaces", "Ideal Design\Technical Packages (Crosscutting)\DEAD.Caching.Interfaces\DEAD.Caching.Interfaces.csproj", "{3C2A6C14-86A1-4EFC-BEF5-F55554A153EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Caching.Interfaces", "Ideal Design\Technical Packages\DEAD.Caching.Interfaces\DEAD.Caching.Interfaces.csproj", "{3C2A6C14-86A1-4EFC-BEF5-F55554A153EB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F1F387B1-7525-429A-80D5-FFC1A5A1E79E} = {F1F387B1-7525-429A-80D5-FFC1A5A1E79E}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Logging.Interfaces", "Ideal Design\Technical Packages (Crosscutting)\DEAD.Logging.Interfaces\DEAD.Logging.Interfaces.csproj", "{306D2CB1-A1ED-4D8E-B3B8-9776297F3E1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Logging.Interfaces", "Ideal Design\Technical Packages\DEAD.Logging.Interfaces\DEAD.Logging.Interfaces.csproj", "{306D2CB1-A1ED-4D8E-B3B8-9776297F3E1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Logging", "Ideal Design\Technical Packages (Crosscutting)\DEAD.Logging\DEAD.Logging.csproj", "{DFDC970D-8287-4A38-A235-5DF76B22554B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.Logging", "Ideal Design\Technical Packages\DEAD.Logging\DEAD.Logging.csproj", "{DFDC970D-8287-4A38-A235-5DF76B22554B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.ServiceAndRemoting", "Ideal Design\Technical Packages (Crosscutting)\DEAD.ServiceAndRemoting\DEAD.ServiceAndRemoting.csproj", "{2CFA768E-D42E-4A4E-BC60-BCB107992CB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.ServiceAndRemoting", "Ideal Design\Technical Packages\DEAD.ServiceAndRemoting\DEAD.ServiceAndRemoting.csproj", "{2CFA768E-D42E-4A4E-BC60-BCB107992CB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.ServiceAndRemoting.Interfaces", "Ideal Design\Technical Packages (Crosscutting)\DEAD.ServiceAndRemoting.Interfaces\DEAD.ServiceAndRemoting.Interfaces.csproj", "{047CF6E3-E5E6-4920-A05A-77D9A6E995D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEAD.ServiceAndRemoting.Interfaces", "Ideal Design\Technical Packages\DEAD.ServiceAndRemoting.Interfaces\DEAD.ServiceAndRemoting.Interfaces.csproj", "{047CF6E3-E5E6-4920-A05A-77D9A6E995D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Models", "Ideal Design\Development Projects\SampleMyBusinessSolution1.Models\SampleMyBusinessSolution1.Models.csproj", "{A1DA14E8-F3C8-4FB0-8D17-976FDB09F08A}"
 EndProject
@@ -118,6 +121,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Portal.Tests", "SampleMyBusinessSolution1.Portal.Tests\SampleMyBusinessSolution1.Portal.Tests.csproj", "{405B4299-8027-4A44-9192-560A047B20E9}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SampleMyBusinessSolution1.MainDatabase", "Ideal Design\Development Projects\SampleMyBusinessSolution1.MainDatabase\SampleMyBusinessSolution1.MainDatabase.sqlproj", "{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsForBuild", "Tools\ToolsForBuild\ToolsForBuild.csproj", "{F1F387B1-7525-429A-80D5-FFC1A5A1E79E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -211,6 +216,10 @@ Global
 		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F1F387B1-7525-429A-80D5-FFC1A5A1E79E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F387B1-7525-429A-80D5-FFC1A5A1E79E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F387B1-7525-429A-80D5-FFC1A5A1E79E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F387B1-7525-429A-80D5-FFC1A5A1E79E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -271,5 +280,6 @@ Global
 		{6265E0DD-D763-4F01-9D20-0C92E671664C} = {E4203FE1-0F2D-4B98-8859-6CA5C31EC74D}
 		{405B4299-8027-4A44-9192-560A047B20E9} = {E4203FE1-0F2D-4B98-8859-6CA5C31EC74D}
 		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE} = {20A0981D-853F-4648-9E77-74F8FBB349E5}
+		{F1F387B1-7525-429A-80D5-FFC1A5A1E79E} = {64780C2F-D210-4DE0-976C-EF5884DA75D3}
 	EndGlobalSection
 EndGlobal
