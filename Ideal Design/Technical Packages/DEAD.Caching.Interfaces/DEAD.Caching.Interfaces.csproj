@@ -7,7 +7,7 @@
     <ProjectGuid>{3C2A6C14-86A1-4EFC-BEF5-F55554A153EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DEAD.Caching.Interfaces</RootNamespace>
+    <RootNamespace>DEAD.Caching</RootNamespace>
     <AssemblyName>DEAD.Caching.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
