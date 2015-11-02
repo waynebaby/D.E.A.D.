@@ -93,7 +93,7 @@ namespace ToolsForBuild
 						}
 					}
 				}
-				File.Copy(typeof(Program).Assembly.Location, Path.Combine(ToPath, "ToolsForBuild.exe"), true);
+				//File.Copy(typeof(Program).Assembly.Location, Path.Combine(ToPath, "ToolsForBuild.exe"), true);
 			}
 		}
 
