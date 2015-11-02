@@ -48,9 +48,9 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>cd $(OutDir)
-xcopy "$(SolutionDir)Tools\ToolsForBuild\Files\nuget\*.*" "$(OutDir)"   /s  /i /y
+xcopy "$(ProjectDir)..\Files\nuget\*.*" "$(OutDir)"   /s  /i /y
 
-"$(SolutionDir)Tools\ToolsForBuild\bin\ToolsForBuild" GenCurrentNuspec "$(ProjectDir)PackageVersions.xml" "$(ProjectName)"
+"$(ProjectDir)..\ToolsForBuild" GenCurrentNuspec "$(ProjectDir)PackageVersions.xml" "$(ProjectName)"
 
 md tools
 md content
@@ -60,7 +60,7 @@ md src
 xcopy $(ProjectName)*.* lib   /i /y
 
 
-"$(SolutionDir)Tools\ToolsForBuild\Files\nuget\BuildPublishPackage.cmd" "$(ProjectName)" 
+"$(ProjectDir)..\Files\nuget\BuildPublishPackage.cmd" "$(ProjectName)" 
 
 xcopy "$(ProjectName)" "$(SolutionDir)\TechPackagesOutput"</PostBuildEvent>
   </PropertyGroup>

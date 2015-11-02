@@ -8,15 +8,37 @@ using System.Xml.Linq;
 
 namespace ToolsForBuild
 {
-	class Program
+
+	public static class Helper
+	{
+		public static void CreateDirIfNotExists(string folder)
+		{
+			bool flag = !Directory.Exists(folder);
+			if (flag)
+			{
+				Directory.CreateDirectory(folder);
+			}
+		}
+		public static void ThrowNewArgumentException(string usage, string message)
+		{
+			throw new ArgumentException(string.Format("  \r\n{0}\r\n{1}", message, usage));
+		}
+	}
+	public class Program
 	{
 		static void Main(string[] args)
 		{
 
 			switch (args.FirstOrDefault())
 			{
-				case "GenCurrentNuspec":
+				case nameof(GenCurrentNuspec):
 					GenCurrentNuspec(args);
+
+
+					break;
+
+				case nameof(ExportTechnicalPackages):
+					ExportTechnicalPackages(args);
 
 
 					break;
@@ -26,6 +48,53 @@ namespace ToolsForBuild
 					break;
 			}
 
+		}
+
+
+
+		public static void ExportTechnicalPackages(string[] args)
+		{
+			string usage = "ToolsForBuild ExportTechnicalPackages<from name> <to name> <from folder> <to folder>";
+
+			if (args.Length < 5)
+			{
+				Helper.ThrowNewArgumentException(usage, "Arguments is not enough.");
+			}
+			else
+			{
+				string FromName = args[1];
+				string ToName = args[2];
+				string FromPath = args[3];
+				string ToPath = args[4];
+
+				if (!Directory.Exists(FromPath))
+				{
+					Helper.ThrowNewArgumentException(usage, "from folder not exists");
+				}
+				Helper.CreateDirIfNotExists(ToPath);
+
+
+				foreach (string current in (new string[] { FromPath }).Concat(Directory.GetDirectories(FromPath, "*.*", SearchOption.AllDirectories).Where(x => !x.Contains(".vs"))))
+				{
+					string relativePath = (current.Length == FromPath.Length) ? "." : current.Remove(0, FromPath.Length + ((FromPath[FromPath.Length - 1] == Path.DirectorySeparatorChar) ? 0 : 1));
+					string targetPath = Path.Combine(ToPath, relativePath.Replace(FromName, ToName));
+					Helper.CreateDirIfNotExists(targetPath);
+
+
+					foreach (string current2 in Directory.GetFiles(current, "*.*"))
+					{
+						string text5 = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(current2).Replace(FromName, ToName) + Path.GetExtension(current2));
+						File.Copy(current2, text5, true);
+						if (!(current2.EndsWith(".exe") || current2.EndsWith(".dll")))
+						{
+
+							string contents = File.ReadAllText(text5).Replace(FromName, ToName);
+							File.WriteAllText(text5, contents);
+						}
+					}
+				}
+				File.Copy(typeof(Program).Assembly.Location, Path.Combine(ToPath, "ToolsForBuild.exe"), true);
+			}
 		}
 
 		private static void GenCurrentNuspec(string[] args)
@@ -58,7 +127,7 @@ namespace ToolsForBuild
 			var title = d.Descendants().First(x => x.Name.LocalName == "title");
 			title.Value = args[2];
 
-			d.Save(args[2]+ ".nuspec");
+			d.Save(args[2] + ".nuspec");
 		}
 	}
 }
