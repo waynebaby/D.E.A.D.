@@ -92,7 +92,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ideal Design\Development Projects\SampleMyBusinessSolution1.Portal\SampleMyBusinessSolution1.Portal.csproj">
+    <ProjectReference Include="..\SampleMyBusinessSolution1.Portal\SampleMyBusinessSolution1.Portal.csproj">
       <Project>{6265E0DD-D763-4F01-9D20-0C92E671664C}</Project>
       <Name>SampleMyBusinessSolution1.Portal</Name>
     </ProjectReference>
