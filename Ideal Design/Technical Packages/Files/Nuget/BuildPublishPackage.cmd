@@ -22,8 +22,8 @@ rem cmd /c nuget.exe update -Self
 echo.
 echo Creating package...
  nuget.exe pack %1.nuspec 
-rem copy %1.%2.nupkg  ..\NugetPrivateSource\Packages  /Y
-rem copy *.nupkg ..
+
+xcopy *.nupkg %2 /y /s  
 
 :: Check if package should be published
 IF /I "%3"=="Publish" goto :publish

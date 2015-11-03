@@ -11,14 +11,15 @@
     <AssemblyName>DEAD.Caching.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile75</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -47,8 +48,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cd $(OutDir)
-xcopy "$(ProjectDir)..\Files\nuget\*.*" "$(OutDir)"   /s  /i /y
+    <PostBuildEvent>
+xcopy "$(ProjectDir)..\Files\nuget\*.*" . /s  /i /y
 
 "$(ProjectDir)..\ToolsForBuild" GenCurrentNuspec "$(ProjectDir)PackageVersions.xml" "$(ProjectName)"
 
@@ -56,13 +57,13 @@ md tools
 md content
 md lib
 md src
+cd
+xcopy $(ProjectName)*.dll lib\net45   /i /y
+dir lib\*.*
 
-xcopy $(ProjectName)*.* lib   /i /y
+"$(ProjectDir)..\Files\nuget\BuildPublishPackage.cmd" "$(ProjectName)" "$(SolutionDir)\TechPackagesOutput"
 
-
-"$(ProjectDir)..\Files\nuget\BuildPublishPackage.cmd" "$(ProjectName)" 
-
-xcopy "$(ProjectName)" "$(SolutionDir)\TechPackagesOutput"</PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
