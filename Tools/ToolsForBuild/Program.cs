@@ -18,21 +18,21 @@ namespace ToolsForBuild
 			{
 				case nameof(GenCurrentNuspec):
 					GenCurrentNuspec(args);
-
-
 					break;
 
 				case nameof(ExportTechnicalPackages):
 					ExportTechnicalPackages(args);
-
-
 					break;
+
 				case nameof(ExportBusinessDevelopmentProjects):
 					ExportBusinessDevelopmentProjects(args);
-
-
 					break;
 
+				case "Help":
+
+					var param = nameof(GenCurrentNuspec);
+					Helper.ShowParamsList(param);
+					break;
 				case null:
 				default:
 					break;
@@ -58,15 +58,15 @@ namespace ToolsForBuild
 				string ToPath = args[3];
 
 				Helper.Export(usage, FromName, ToName, FromPath, ToPath);
-
+			
 			}
 		}
 
 		public static void ExportBusinessDevelopmentProjects(string[] args)
 		{
-			string usage = "ToolsForBuild " + nameof(ExportBusinessDevelopmentProjects) + " <from name> <from folder> <to folder>";
+			string usage = "ToolsForBuild " + nameof(ExportBusinessDevelopmentProjects) + " <from name> <from folder> <to folder> <techical prefix>";
 
-			if (args.Length < 4)
+			if (args.Length < 5)
 			{
 				Helper.ThrowNewArgumentException(usage, "Arguments is not enough.");
 			}
@@ -74,16 +74,28 @@ namespace ToolsForBuild
 			{
 				string FromName = "SampleMyBusinessSolution1";
 				string ToName = args[1];
-				string FromPath = args[2];
-				string ToPath = args[3];
+				string SourcePath = args[2];
+				string TargetPath = args[3];
+				string TechPrefex = args[4];
 
-				Helper.Export(usage, FromName, ToName, FromPath, ToPath);
+				Helper.Export(usage, FromName, ToName, SourcePath, TargetPath);
+
+
+				foreach (var renewFile in Directory.GetFiles(TargetPath, "*.*", SearchOption.AllDirectories)
+					.Where(x => !Helper.BinaryFileExtensionSet.Contains(Path.GetExtension(x).ToLower()))
+					.Where(x=>!x.Contains(".vs")))
+				{
+					Helper.RefreshFile(renewFile, "DEAD", TechPrefex);
+                }
+
 
 			}
 		}
 
 		private static void GenCurrentNuspec(string[] args)
 		{
+			string usage = "ToolsForBuild " + nameof(GenCurrentNuspec) + " <versionFile> <nupkgid>";
+
 			var toolsPath = typeof(Program).Assembly.Location;
 
 			var toolsDir = Path.GetDirectoryName(toolsPath);
@@ -118,7 +130,17 @@ namespace ToolsForBuild
 
 	public static class Helper
 	{
+		public static void ShowParamsList(string param)
+		{
+			Console.Write(nameof(ToolsForBuild));
+			Console.Write(" ");
+			Console.Write(param);
+			Console.WriteLine(" <params>");
+			Console.WriteLine("enter '{0} {1}' to get more informarion", nameof(ToolsForBuild), param);
 
+			Console.WriteLine();
+
+		}
 		public static void Export(string usage, string FromName, string ToName, string FromPath, string ToPath)
 		{
 			if (!Directory.Exists(FromPath))
@@ -126,8 +148,34 @@ namespace ToolsForBuild
 				Helper.ThrowNewArgumentException(usage, "from folder not exists");
 			}
 			Helper.CreateDirIfNotExists(ToPath);
+			HashSet<string> binFiles = BinaryFileExtensionSet;
 
-			var binFiles = new HashSet<string>
+			foreach (string sourcePath in (new string[] { FromPath }).Concat(Directory.GetDirectories(FromPath, "*.*", SearchOption.AllDirectories).Where(x => !x.Contains(".vs"))))
+			{
+				string relativePath = (sourcePath.Length == FromPath.Length) ? "." : sourcePath.Remove(0, FromPath.Length + ((FromPath[FromPath.Length - 1] == Path.DirectorySeparatorChar) ? 0 : 1));
+				string targetPath = Path.Combine(ToPath, relativePath.Replace(FromName, ToName));
+				Helper.CreateDirIfNotExists(targetPath);
+
+
+				foreach (string sourceFile in Directory.GetFiles(sourcePath, "*.*"))
+				{
+					string targetFile = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(sourceFile).Replace(FromName, ToName) + Path.GetExtension(sourceFile));
+					File.Copy(sourceFile, targetFile, true);
+					if (!(binFiles.Contains(Path.GetExtension(sourceFile).ToLower())))
+					{
+						RefreshFile(targetFile, FromName, ToName);
+					}
+				}
+			}
+		}
+
+		public  static void RefreshFile(string targetFile, string fromName, string toName)
+		{
+			string contents = File.ReadAllText(targetFile).Replace(fromName, toName);
+			File.WriteAllText(targetFile, contents);
+		}
+
+		public static HashSet<string> BinaryFileExtensionSet { get; } = new HashSet<string>
 			{
 				".exe",
 				".pdb",
@@ -135,30 +183,8 @@ namespace ToolsForBuild
 				".nupkg",
 				".gif",
 				".png",
-				""
+				".jpg"
 			};
-
-			foreach (string current in (new string[] { FromPath }).Concat(Directory.GetDirectories(FromPath, "*.*", SearchOption.AllDirectories).Where(x => !x.Contains(".vs"))))
-			{
-				string relativePath = (current.Length == FromPath.Length) ? "." : current.Remove(0, FromPath.Length + ((FromPath[FromPath.Length - 1] == Path.DirectorySeparatorChar) ? 0 : 1));
-				string targetPath = Path.Combine(ToPath, relativePath.Replace(FromName, ToName));
-				Helper.CreateDirIfNotExists(targetPath);
-
-
-				foreach (string current2 in Directory.GetFiles(current, "*.*"))
-				{
-					string text5 = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(current2).Replace(FromName, ToName) + Path.GetExtension(current2));
-					File.Copy(current2, text5, true);
-					if (!(binFiles.Contains(Path.GetExtension(current2).ToLower())))
-					{
-
-						string contents = File.ReadAllText(text5).Replace(FromName, ToName);
-						File.WriteAllText(text5, contents);
-					}
-				}
-			}
-		}
-
 
 		public static void CreateDirIfNotExists(string folder)
 		{
