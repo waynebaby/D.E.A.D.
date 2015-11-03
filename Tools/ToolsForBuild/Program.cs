@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace ToolsForBuild
 {
-
+	using static Helper;
 	public class Program
 	{
 		static void Main(string[] args)
@@ -31,7 +31,7 @@ namespace ToolsForBuild
 				case "Help":
 
 					var param = nameof(GenCurrentNuspec);
-					Helper.ShowParamsList(param);
+					ShowParamsList(param);
 					break;
 				case null:
 				default:
@@ -57,8 +57,8 @@ namespace ToolsForBuild
 				string FromPath = args[2];
 				string ToPath = args[3];
 
-				Helper.Export(usage, FromName, ToName, FromPath, ToPath);
-			
+				Export(usage, FromName, ToName, FromPath, ToPath);
+
 			}
 		}
 
@@ -78,15 +78,15 @@ namespace ToolsForBuild
 				string TargetPath = args[3];
 				string TechPrefex = args[4];
 
-				Helper.Export(usage, FromName, ToName, SourcePath, TargetPath);
+				Export(usage, FromName, ToName, SourcePath, TargetPath);
 
 
 				foreach (var renewFile in Directory.GetFiles(TargetPath, "*.*", SearchOption.AllDirectories)
 					.Where(x => !Helper.BinaryFileExtensionSet.Contains(Path.GetExtension(x).ToLower()))
-					.Where(x=>!x.Contains(".vs")))
+					.Where(x => !x.Contains(".vs")))
 				{
 					Helper.RefreshFile(renewFile, "DEAD", TechPrefex);
-                }
+				}
 
 
 			}
@@ -94,8 +94,9 @@ namespace ToolsForBuild
 
 		private static void GenCurrentNuspec(string[] args)
 		{
-			string usage = "ToolsForBuild " + nameof(GenCurrentNuspec) + " <versionFile> <nupkgid>";
-
+			string usage = "ToolsForBuild " + nameof(GenCurrentNuspec) + " <priject path> <nupkgid>";
+			var versionFileName = "PackageVersions.xml";
+			var packagesFileName = "packages.config";
 			var toolsPath = typeof(Program).Assembly.Location;
 
 			var toolsDir = Path.GetDirectoryName(toolsPath);
@@ -104,18 +105,25 @@ namespace ToolsForBuild
 
 			if (args.Length < 3)
 			{
-				throw new IndexOutOfRangeException("need path of nuget spec file and projectName");
+				ThrowNewArgumentException(usage, "need path of nuget spec file and projectName");
 			}
 
-			if (!File.Exists(args[1]))
+			if (File.Exists(args[1]))
 			{
-				throw new IndexOutOfRangeException("xml file not exists");
+				args[1] = Path.GetDirectoryName(args[1]);
 			}
+			if (!Directory.Exists(args[1]))
+			{
+				throw new IndexOutOfRangeException("path not exists");
+			}
+			var versionFilePath = Path.Combine(args[1], versionFileName);
+			var packagesFilePath = Path.Combine(args[1], packagesFileName);
+
 
 			var d = XDocument.Load(nugspecDir);
 			var ver = d.Descendants().First(x => x.Name.LocalName == "version");
 
-			var currentPackageVersion = XDocument.Load(args[1]).Descendants().First(x => x.Name.LocalName == "version");
+			var currentPackageVersion = XDocument.Load(versionFilePath).Descendants().First(x => x.Name.LocalName == "version");
 			ver.Value = currentPackageVersion.Attribute("number").Value;
 
 			var id = d.Descendants().First(x => x.Name.LocalName == "id");
@@ -123,6 +131,25 @@ namespace ToolsForBuild
 
 			var title = d.Descendants().First(x => x.Name.LocalName == "title");
 			title.Value = args[2];
+
+			if (File.Exists(packagesFilePath))
+			{
+				var dpkg = XDocument.Load(packagesFilePath);
+				var targetElement = d.Descendants().First(x => x.Name.LocalName == "dependencies");
+				var sourceElements = dpkg.Descendants().Where(x => x.Name.LocalName == "package").ToArray();
+				foreach (var e in sourceElements)
+				{
+					var oname = e.Name;
+					var nname = XName.Get("dependency", oname.NamespaceName);
+					e.Name = nname;
+					foreach (var att in e.Attributes()
+						.Where(x => x.Name.LocalName != "id" && x.Name.LocalName != "version"))
+					{
+						att.Remove();
+					}
+					targetElement.Add(e);
+				}
+			}
 
 			d.Save(args[2] + ".nuspec");
 		}
@@ -145,7 +172,7 @@ namespace ToolsForBuild
 		{
 			if (!Directory.Exists(FromPath))
 			{
-				Helper.ThrowNewArgumentException(usage, "from folder not exists");
+				ThrowNewArgumentException(usage, "from folder not exists");
 			}
 			Helper.CreateDirIfNotExists(ToPath);
 			HashSet<string> binFiles = BinaryFileExtensionSet;
@@ -169,7 +196,7 @@ namespace ToolsForBuild
 			}
 		}
 
-		public  static void RefreshFile(string targetFile, string fromName, string toName)
+		public static void RefreshFile(string targetFile, string fromName, string toName)
 		{
 			string contents = File.ReadAllText(targetFile).Replace(fromName, toName);
 			File.WriteAllText(targetFile, contents);
