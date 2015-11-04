@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SampleMyBusinessSolution1.Services
+namespace DEAD.DependencyInjection
 {
-    public class Class1
-    {
-    }
+	public interface IIoCConfigure
+	{
+		void Configure(IIoCManager manager);
+	}
 }

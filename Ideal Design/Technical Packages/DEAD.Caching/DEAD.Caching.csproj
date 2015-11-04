@@ -65,7 +65,7 @@
       md lib
       md src
       cd
-      xcopy $(ProjectName)*.dll lib\net45   /i /y
+      xcopy *$(ProjectName).dll lib\net45   /i /y
       dir lib\*.*
 
       "$(ProjectDir)..\Files\nuget\BuildPublishPackage.cmd" "$(ProjectName)" "$(SolutionDir)\TechPackagesOutput"

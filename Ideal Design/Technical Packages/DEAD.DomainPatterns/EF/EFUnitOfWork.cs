@@ -109,7 +109,7 @@ namespace DEAD.DomainPatterns.EF
 				}
 
 				var er = sb.ToString();
-				Debug.WriteLine(sb.ToString());
+			
 
 #if DEBUG
 				throw new Exception(er, ex);

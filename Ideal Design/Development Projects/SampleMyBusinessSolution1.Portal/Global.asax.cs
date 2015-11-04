@@ -15,6 +15,7 @@ namespace SampleMyBusinessSolution1.Portal
     {
         protected void Application_Start()
         {
+			IoCConfig.ConfigureIoC();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

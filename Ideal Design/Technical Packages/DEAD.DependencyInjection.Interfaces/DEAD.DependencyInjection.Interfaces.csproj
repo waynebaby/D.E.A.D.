@@ -31,7 +31,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
- 
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IIoCContainer.cs" />
+    <Compile Include="IIoCManager.cs" />
+    <Compile Include="IIoCConfigure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,7 +59,7 @@
       md lib
       md src
       cd
-      xcopy $(ProjectName)*.dll lib\net45   /i /y
+      xcopy *$(ProjectName).dll lib\net45   /i /y
       dir lib\*.*
 
       "$(ProjectDir)..\Files\nuget\BuildPublishPackage.cmd" "$(ProjectName)" "$(SolutionDir)\TechPackagesOutput"

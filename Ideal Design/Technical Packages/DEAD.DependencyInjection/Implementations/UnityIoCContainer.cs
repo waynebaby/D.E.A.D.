@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DEAD.DependencyInjection
+namespace DEAD.DependencyInjection.Implementations
 {
 	public class UnityIoCContainer : IIoCContainer
 	{
@@ -26,7 +26,7 @@ namespace DEAD.DependencyInjection
 
 		public IIoCContainer RegisterInstance(Type t, string name, object instance)
 		{
-			_container.RegisterInstance(t, name, instance);
+			_container.RegisterInstance(t, name, instance, new ContainerControlledLifetimeManager());
 			return this;
 		}
 
@@ -34,6 +34,17 @@ namespace DEAD.DependencyInjection
 		{
 			_container.RegisterType(from, to, name);
 			return this;
+		}
+
+		public object Resolve(Type t, string name)
+		{
+			return _container.Resolve(t, name);
+		}
+
+
+		public IEnumerable<object> ResolveAll(Type t)
+		{
+			return _container.ResolveAll(t);
 		}
 	}
 }

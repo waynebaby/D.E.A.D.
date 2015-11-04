@@ -15,5 +15,7 @@ namespace DEAD.DependencyInjection
 		object GetContainerCore(Type containerCoreType);	 
 		TContainerCore GetContainerCore<TContainerCore>() where TContainerCore:class;
 
+		Object Resolve(Type t, string name);
+
 	}
 }

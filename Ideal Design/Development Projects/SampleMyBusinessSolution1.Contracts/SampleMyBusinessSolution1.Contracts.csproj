@@ -5,7 +5,7 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{74460e65-1748-4aba-b352-df96548a77dd}</ProjectGuid>
+    <ProjectGuid>{74460E65-1748-4ABA-B352-DF96548A77DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SampleMyBusinessSolution1.Contracts</RootNamespace>
@@ -35,9 +35,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\SampleMyBusinessSolution1.Models\SampleMyBusinessSolution1.Models.csproj">
+      <Project>{a1da14e8-f3c8-4fb0-8d17-976fdb09f08a}</Project>
+      <Name>SampleMyBusinessSolution1.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="IGroupService.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
@@ -48,5 +53,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
 </Project>
