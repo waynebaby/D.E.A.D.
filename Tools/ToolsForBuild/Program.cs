@@ -210,13 +210,17 @@ namespace ToolsForBuild
 
 				foreach (string sourceFile in Directory.GetFiles(sourcePath, "*.*"))
 				{
-					if (!(binFiles.Contains(Path.GetExtension(sourceFile).ToLower())))
+					var ext = Path.GetExtension(sourceFile).ToLower();
+					if (ext != ".nupkg")
 					{
 						string targetFile = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(sourceFile).Replace(FromName, ToName) + Path.GetExtension(sourceFile));
 						File.Copy(sourceFile, targetFile, true);
-
-						RefreshFile(targetFile, FromName, ToName);
+						if (!(binFiles.Contains(ext)))
+						{
+							RefreshFile(targetFile, FromName, ToName);
+						}
 					}
+
 				}
 
 			}
