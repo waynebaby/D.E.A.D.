@@ -1,3 +1,3 @@
 ﻿
-ToolsForBuild ExportBusinessDevelopmentProjects "MyProject" "d:\Users\waywa\Documents\GitHubVisualStudio\D.E.A.D\Ideal Design\Development Projects" ""c:\DEADExport\MyProject"" "MyLib"
+ToolsForBuild.exe ExportBusinessDevelopmentProjects "MyProject1" "..\..\..\Ideal Design\Development Projects" ""..\..\..DEADExport\MyProject"" "MyLib2"
 pause

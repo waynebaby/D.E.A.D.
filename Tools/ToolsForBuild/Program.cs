@@ -194,22 +194,31 @@ namespace ToolsForBuild
 			Helper.CreateDirIfNotExists(ToPath);
 			HashSet<string> binFiles = BinaryFileExtensionSet;
 
-			foreach (string sourcePath in (new string[] { FromPath }).Concat(Directory.GetDirectories(FromPath, "*.*", SearchOption.AllDirectories).Where(x => !x.Contains(".vs"))))
+			foreach (string sourcePath in (new string[] { FromPath })
+				.Concat(Directory.GetDirectories(FromPath, "*.*", SearchOption.AllDirectories)
+				.Where(x => !x.Contains("\\.vs"))
+				.Where(x => !x.Contains("\\bin"))
+				.Where(x => !x.Contains("\\obj"))
+
+				))
 			{
 				string relativePath = (sourcePath.Length == FromPath.Length) ? "." : sourcePath.Remove(0, FromPath.Length + ((FromPath[FromPath.Length - 1] == Path.DirectorySeparatorChar) ? 0 : 1));
 				string targetPath = Path.Combine(ToPath, relativePath.Replace(FromName, ToName));
 				Helper.CreateDirIfNotExists(targetPath);
 
 
+
 				foreach (string sourceFile in Directory.GetFiles(sourcePath, "*.*"))
 				{
-					string targetFile = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(sourceFile).Replace(FromName, ToName) + Path.GetExtension(sourceFile));
-					File.Copy(sourceFile, targetFile, true);
 					if (!(binFiles.Contains(Path.GetExtension(sourceFile).ToLower())))
 					{
+						string targetFile = Path.Combine(targetPath, Path.GetFileNameWithoutExtension(sourceFile).Replace(FromName, ToName) + Path.GetExtension(sourceFile));
+						File.Copy(sourceFile, targetFile, true);
+
 						RefreshFile(targetFile, FromName, ToName);
 					}
 				}
+
 			}
 		}
 
@@ -220,6 +229,16 @@ namespace ToolsForBuild
 				File.SetAttributes(targetFile, FileAttributes.Normal);
 			}
 			string contents = File.ReadAllText(targetFile).Replace(fromName, toName);
+			if (Path.GetExtension(targetFile).EndsWith("proj"))
+			{
+				contents = contents.Replace(@"<HintPath>..\..\..\packages\", @"<HintPath>..\packages\");
+
+			}
+
+			//if (Path.GetFileName(targetFile) == "PackageVersions.xml")
+			//{
+			//	contents = contents.Replace("-prerelease", "");
+			//}
 			File.WriteAllText(targetFile, contents);
 		}
 

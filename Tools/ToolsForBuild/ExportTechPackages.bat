@@ -1,3 +1,3 @@
 ﻿
-ToolsForBuild ExportTechnicalPackages "MyLib" "d:\Users\waywa\Documents\GitHubVisualStudio\D.E.A.D\Ideal Design\Technical Packages" "c:\DEADExport\Technical Packages"
+ToolsForBuild.exe ExportTechnicalPackages "MyLib2" "..\..\..\Ideal Design\Technical Packages" "..\..\..DEADExport\Technical Packages"
 pause
