@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace ToolsForBuild
 {
-	using static Helper;
+
 	public class Program
 	{
 		static void Main(string[] args)
@@ -16,22 +16,26 @@ namespace ToolsForBuild
 
 			switch (args.FirstOrDefault())
 			{
-				case nameof(GenCurrentNuspec):
+				case "GenCurrentNuspec":
 					GenCurrentNuspec(args);
 					break;
 
-				case nameof(ExportTechnicalPackages):
+				case "ExportTechnicalPackages":
 					ExportTechnicalPackages(args);
 					break;
 
-				case nameof(ExportBusinessDevelopmentProjects):
+				case "ExportBusinessDevelopmentProjects":
 					ExportBusinessDevelopmentProjects(args);
 					break;
 
 				case "Help":
 
-					var param = nameof(GenCurrentNuspec);
-					ShowParamsList(param);
+
+					Helper.ShowParamsList("GenCurrentNuspec");
+					Helper.ShowParamsList("ExportTechnicalPackages");
+					Helper.ShowParamsList("ExportBusinessDevelopmentProjects");
+
+
 					break;
 				case null:
 				default:
@@ -44,7 +48,7 @@ namespace ToolsForBuild
 
 		public static void ExportTechnicalPackages(string[] args)
 		{
-			string usage = "ToolsForBuild " + nameof(ExportTechnicalPackages) + " <from name> <from folder> <to folder>";
+			string usage = "ToolsForBuild " + "ExportTechnicalPackages" + " <from name> <from folder> <to folder>";
 
 			if (args.Length < 4)
 			{
@@ -57,14 +61,14 @@ namespace ToolsForBuild
 				string FromPath = args[2];
 				string ToPath = args[3];
 
-				Export(usage, FromName, ToName, FromPath, ToPath);
+				Helper.Export(usage, FromName, ToName, FromPath, ToPath);
 
 			}
 		}
 
 		public static void ExportBusinessDevelopmentProjects(string[] args)
 		{
-			string usage = "ToolsForBuild " + nameof(ExportBusinessDevelopmentProjects) + " <from name> <from folder> <to folder> <techical prefix>";
+			string usage = "ToolsForBuild " + "ExportBusinessDevelopmentProjects" + " <from name> <from folder> <to folder> <techical prefix>";
 
 			if (args.Length < 5)
 			{
@@ -78,7 +82,7 @@ namespace ToolsForBuild
 				string TargetPath = args[3];
 				string TechPrefex = args[4];
 
-				Export(usage, FromName, ToName, SourcePath, TargetPath);
+				Helper.Export(usage, FromName, ToName, SourcePath, TargetPath);
 
 
 				foreach (var renewFile in Directory.GetFiles(TargetPath, "*.*", SearchOption.AllDirectories)
@@ -94,7 +98,7 @@ namespace ToolsForBuild
 
 		private static void GenCurrentNuspec(string[] args)
 		{
-			string usage = "ToolsForBuild " + nameof(GenCurrentNuspec) + " <priject path> <nupkgid>";
+			string usage = "ToolsForBuild " + "GenCurrentNuspec" + " <priject path> <nupkgid>";
 			var versionFileName = "PackageVersions.xml";
 			var packagesFileName = "packages.config";
 			var toolsPath = typeof(Program).Assembly.Location;
@@ -105,7 +109,7 @@ namespace ToolsForBuild
 
 			if (args.Length < 3)
 			{
-				ThrowNewArgumentException(usage, "need path of nuget spec file and projectName");
+				Helper.ThrowNewArgumentException(usage, "need path of nuget spec file and projectName");
 			}
 
 			if (File.Exists(args[1]))
@@ -157,13 +161,26 @@ namespace ToolsForBuild
 
 	public static class Helper
 	{
+		static Helper()
+		{
+			BinaryFileExtensionSet = new HashSet<string>
+			{
+				".exe",
+				".pdb",
+				".dll",
+				".nupkg",
+				".gif",
+				".png",
+				".jpg"
+			};
+		}
 		public static void ShowParamsList(string param)
 		{
-			Console.Write(nameof(ToolsForBuild));
+			Console.Write("ToolsForBuild");
 			Console.Write(" ");
 			Console.Write(param);
 			Console.WriteLine(" <params>");
-			Console.WriteLine("enter '{0} {1}' to get more informarion", nameof(ToolsForBuild), param);
+			Console.WriteLine("enter '{0} {1}' to get more informarion", "ToolsForBuild", param);
 
 			Console.WriteLine();
 
@@ -198,20 +215,15 @@ namespace ToolsForBuild
 
 		public static void RefreshFile(string targetFile, string fromName, string toName)
 		{
+			if (File.Exists(targetFile))
+			{
+				File.SetAttributes(targetFile, FileAttributes.Normal);
+			}
 			string contents = File.ReadAllText(targetFile).Replace(fromName, toName);
 			File.WriteAllText(targetFile, contents);
 		}
 
-		public static HashSet<string> BinaryFileExtensionSet { get; } = new HashSet<string>
-			{
-				".exe",
-				".pdb",
-				".dll",
-				".nupkg",
-				".gif",
-				".png",
-				".jpg"
-			};
+		public static HashSet<string> BinaryFileExtensionSet { get; private set; }
 
 		public static void CreateDirIfNotExists(string folder)
 		{

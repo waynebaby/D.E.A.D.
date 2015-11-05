@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ExportTechPackages.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ExportBusiness.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
