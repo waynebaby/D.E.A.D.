@@ -23,7 +23,7 @@ echo.
 echo Creating package...
  nuget.exe pack %1.nuspec 
 
-xcopy *.nupkg %2 /y /s /i 
+ xcopy *.nupkg %2 /y /s /i 
 
 :: Check if package should be published
 IF /I "%3"=="Publish" goto :publish
