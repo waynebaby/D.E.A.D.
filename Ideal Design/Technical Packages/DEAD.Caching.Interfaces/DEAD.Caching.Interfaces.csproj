@@ -46,6 +46,9 @@
   <ItemGroup>
     <Content Include="PackageVersions.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
