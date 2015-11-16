@@ -39,6 +39,22 @@
       <HintPath>..\..\..\packages\DEAD.DependencyInjection.Interfaces.0.0.4-prerelease\lib\net45\DEAD.DependencyInjection.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DEAD.DomainPatterns, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\DEAD.DomainPatterns.0.0.4-prerelease\lib\net45\DEAD.DomainPatterns.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DEAD.DomainPatterns.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\DEAD.DomainPatterns.Interfaces.0.0.1-prerelease\lib\net45\DEAD.DomainPatterns.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -56,6 +72,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,7 +89,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SampleMyBusinessSolution1.Contracts\SampleMyBusinessSolution1.Contracts.csproj">
+      <Project>{74460e65-1748-4aba-b352-df96548a77dd}</Project>
+      <Name>SampleMyBusinessSolution1.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SampleMyBusinessSolution1.Models.Mapping\SampleMyBusinessSolution1.Models.Mapping.csproj">
+      <Project>{e33e73d8-ad5a-4f5f-9734-f602ca36082b}</Project>
+      <Name>SampleMyBusinessSolution1.Models.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SampleMyBusinessSolution1.Models\SampleMyBusinessSolution1.Models.csproj">
+      <Project>{a1da14e8-f3c8-4fb0-8d17-976fdb09f08a}</Project>
+      <Name>SampleMyBusinessSolution1.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

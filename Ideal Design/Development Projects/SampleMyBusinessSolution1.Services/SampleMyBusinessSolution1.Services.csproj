@@ -43,7 +43,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="DEAD.DomainPatterns, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\DEAD.DomainPatterns.0.0.2-prerelease\lib\net45\DEAD.DomainPatterns.dll</HintPath>
+      <HintPath>..\..\..\packages\DEAD.DomainPatterns.0.0.4-prerelease\lib\net45\DEAD.DomainPatterns.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DEAD.DomainPatterns.Interfaces">

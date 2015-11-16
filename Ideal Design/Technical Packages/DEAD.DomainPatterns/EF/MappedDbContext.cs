@@ -9,25 +9,31 @@ using System.Threading.Tasks;
 
 namespace DEAD.DomainPatterns.EF
 {
-	public class MappedDbContext<T> : DbContext
-	{
-		public MappedDbContext(string nameOrConnectionString)
-		   : base(nameOrConnectionString)
-		{
+    public class MappedDbContext<T> : DbContext
+    {
+        public MappedDbContext(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        {
 
 
-		}
-
-	
+        }
 
 
-		protected override void OnModelCreating(DbModelBuilder modelBuilder)
-		{
-			Assembly loadingAssembly = IoCManager.Instance.DefualtContainer.Resolve<Assembly>("For"+this.GetType().FullName);
-			modelBuilder.Configurations.AddFromAssembly(loadingAssembly);
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Assembly loadingAssembly = IoCManager.Instance.DefualtContainer.Resolve<Assembly>(RegisterModelConfiguresName);
+            modelBuilder.Configurations.AddFromAssembly(loadingAssembly);
             base.OnModelCreating(modelBuilder);
-		}
+        }
+
+        static readonly string _RegisterModelConfiguresName = "For" + typeof(MappedDbContext<T>).FullName;
+        public static string RegisterModelConfiguresName
+        {
+            get { return _RegisterModelConfiguresName; }
+        }
 
 
-	}
+    }
 }
