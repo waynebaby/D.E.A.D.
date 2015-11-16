@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace SampleMyBusinessSolution1.Contracts
 {
-	public interface IGroupService
-	{
-		Task<Group> AddGroupAsync(Group Group);
+    public interface IGroupService
+    {
+        Task<Group> AddGroupAsync(Group group);
 
-		Task<Group> UpdateGroupAsync(Group Group);
+        Task<Group> UpdateGroupAsync(Group group);
 
 
-
-		Task RemoveGroupAsync(Group Group);
-	}
+        Task RemoveGroupAsync(Group group);
+    }
 }

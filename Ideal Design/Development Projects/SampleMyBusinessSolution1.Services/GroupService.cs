@@ -1,28 +1,54 @@
-﻿using SampleMyBusinessSolution1.Contracts;
+﻿using AutoMapper;
+using DEAD.DependencyInjection;
+using DEAD.DomainPatterns;
+using SampleMyBusinessSolution1.Contracts;
 using SampleMyBusinessSolution1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.Entity;
 namespace SampleMyBusinessSolution1.Services
 {
 	public class GroupService : IGroupService
 	{
-		public Task<Group> AddGroupAsync(Group Group)
+		public async Task<Group> AddGroupAsync(Group group)
 		{
-			throw new NotImplementedException();
+			using (var uow = IoCManager.Instance.DefualtContainer.Resolve<IUnitOfWork>())
+			{
+				var repo = uow.GetRepository<Group>();
+				repo.Add(group);
+				await uow.SubmitAsync();
+			}
+			return group;
 		}
 
-		public Task RemoveGroupAsync(Group Group)
+		public async Task RemoveGroupAsync(Group group)
 		{
-			throw new NotImplementedException();
+			using (var uow = IoCManager.Instance.DefualtContainer.Resolve<IUnitOfWork>())
+			{
+				var repo = uow.GetRepository<Group>();
+				repo.Remove(group);
+				await uow.SubmitAsync();
+			}
+
 		}
 
-		public Task<Group> UpdateGroupAsync(Group Group)
+		public async Task<Group> UpdateGroupAsync(Group group)
 		{
-			throw new NotImplementedException();
+			using (var uow = IoCManager.Instance.DefualtContainer.Resolve<IUnitOfWork>())
+			{
+				var repo = uow.GetRepository<Group>();
+				var target = await repo
+					.Entities
+					.Where(x => x.Id == group.Id)
+					.SingleAsync();
+				Mapper.DynamicMap(group, target);
+				await uow.SubmitAsync();
+				return target;
+			}
+
 		}
 	}
 }

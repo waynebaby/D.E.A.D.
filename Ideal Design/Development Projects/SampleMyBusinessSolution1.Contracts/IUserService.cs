@@ -13,7 +13,8 @@ namespace SampleMyBusinessSolution1.Contracts
 
 		Task<User> UpdateUserAsync(User user);
 
-		Task<User> MoveUserToGroupAsync(Group group);
+		Task<User> MoveUserToGroupAsync(int userId, int groupId);
 
+		Task RemoveUserAsync(User user);
 	}
 }
