@@ -18,9 +18,11 @@ namespace SampleMyBusinessSolution1.Models.Mapping
 
 			Property(x => x.Name).HasMaxLength(50).IsUnicode().IsRequired();
 
-			HasOptional(x => x.Group)
-				.WithMany(x => x.Users)
-				.HasForeignKey(x=>x.GroupId)
+			
+			
+			HasOptional(u => u.Group)
+				.WithMany(g => g.Users)
+				.HasForeignKey(u=>u.GroupId)
 				.WillCascadeOnDelete(false);
 		}
 

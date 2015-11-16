@@ -24,7 +24,7 @@ namespace DEAD.DomainPatterns.EF
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Assembly loadingAssembly = IoCManager.Instance.DefualtContainer.Resolve<Assembly>(RegisterModelConfiguresName);
-            modelBuilder.Configurations.AddFromAssembly(loadingAssembly);
+	        modelBuilder.Configurations.AddFromAssembly(loadingAssembly);
             base.OnModelCreating(modelBuilder);
         }
 
