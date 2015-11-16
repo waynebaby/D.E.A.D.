@@ -24,11 +24,25 @@ namespace SampleMyBusinessSolution1.Services
 			return group;
 		}
 
+		public async Task<Group> GetGroupAsync(int groupId)
+		{
+			using (var uow = IoCManager.Instance.DefualtContainer.Resolve<IUnitOfWork>())
+			{
+				var repo = uow.GetRepository<Group>();
+				var target = await repo
+				.Entities
+				.Where(x => x.Id == groupId)
+				.SingleAsync();
+				return target;
+			}
+		}
+
 		public async Task RemoveGroupAsync(Group group)
 		{
 			using (var uow = IoCManager.Instance.DefualtContainer.Resolve<IUnitOfWork>())
 			{
 				var repo = uow.GetRepository<Group>();
+				repo.AttachAndRefresh(group);
 				repo.Remove(group);
 				await uow.SubmitAsync();
 			}
@@ -50,5 +64,8 @@ namespace SampleMyBusinessSolution1.Services
 			}
 
 		}
+
+
+
 	}
 }

@@ -27,6 +27,19 @@ namespace SampleMyBusinessSolution1.Services
 			return user;
 		}
 
+		public async Task<User> GetUserAsync(int userId)
+		{
+			using (var uow = IoCManager.Instance.DefualtContainer.Resolve<IUnitOfWork>())
+			{
+				var repou = uow.GetRepository<User>();
+
+				var user = await repou.Entities
+					.Where(x => x.Id == userId)
+					.SingleAsync();
+				return user;
+			}
+		}
+
 		public async Task<User> MoveUserToGroupAsync(int userId, int groupId)
 		{
 			using (var uow = IoCManager.Instance.DefualtContainer.Resolve<IUnitOfWork>())
@@ -48,8 +61,8 @@ namespace SampleMyBusinessSolution1.Services
 					else
 					{
 						throw new Exception("No such group exits");
-					}	 
-				}		 
+					}
+				}
 			}
 		}
 
@@ -58,6 +71,7 @@ namespace SampleMyBusinessSolution1.Services
 			using (var uow = IoCManager.Instance.DefualtContainer.Resolve<IUnitOfWork>())
 			{
 				var repo = uow.GetRepository<User>();
+				repo.AttachAndRefresh(user);
 				repo.Remove(user);
 				await uow.SubmitAsync();
 			}

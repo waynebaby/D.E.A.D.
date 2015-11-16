@@ -16,5 +16,7 @@ namespace SampleMyBusinessSolution1.Contracts
 		Task<User> MoveUserToGroupAsync(int userId, int groupId);
 
 		Task RemoveUserAsync(User user);
+
+		Task<User> GetUserAsync(int userId);
 	}
 }
