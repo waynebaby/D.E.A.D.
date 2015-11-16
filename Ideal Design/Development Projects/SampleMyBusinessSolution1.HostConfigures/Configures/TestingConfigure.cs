@@ -17,9 +17,9 @@ namespace SampleMyBusinessSolution1.HostConfigures.Configures
 	public class TestingConfigure : IIoCConfigure
 	{
 
-		static string _connectionString
+		static string _connectionString   //Initial Catalog=TestingDatabase？
 			= string.Format(@"
-				 Data Source=(localdb)\MSSQLLocalDB;Data Source=(localdb)\v11.0; Initial Catalog=BooksAPIContext-20150419115728; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename={0}
+				 Data Source=(localdb)\MSSQLLocalDB; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename={0}
 				", Path.Combine(
 				Path.GetDirectoryName(typeof(TestingConfigure).Assembly.Location),
 				"TestingDatabase.mdf"
