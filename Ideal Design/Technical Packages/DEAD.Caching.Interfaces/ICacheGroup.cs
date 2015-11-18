@@ -5,7 +5,15 @@ using System.Text;
 
 namespace DEAD.Caching
 {
-    public class Class1
-    {
-    }
+	public interface ICacheGroup
+	{
+
+		void ForceExpireAll();
+
+		ICacheDictionary this[string name]
+		{
+			get;
+		}
+
+	}
 }
