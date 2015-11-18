@@ -65,6 +65,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SampleMyBusinessSolution1.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.Portal.Tests", "SampleMyBusinessSolution1.Portal.Tests\SampleMyBusinessSolution1.Portal.Tests.csproj", "{405B4299-8027-4A44-9192-560A047B20E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMyBusinessSolution1.HostConfigures", "SampleMyBusinessSolution1.HostConfigures\SampleMyBusinessSolution1.HostConfigures.csproj", "{A3D1E714-A383-4D52-A88A-4DB9EA172305}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{405B4299-8027-4A44-9192-560A047B20E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{405B4299-8027-4A44-9192-560A047B20E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{405B4299-8027-4A44-9192-560A047B20E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3D1E714-A383-4D52-A88A-4DB9EA172305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3D1E714-A383-4D52-A88A-4DB9EA172305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3D1E714-A383-4D52-A88A-4DB9EA172305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3D1E714-A383-4D52-A88A-4DB9EA172305}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,5 +146,6 @@ Global
 		{6265E0DD-D763-4F01-9D20-0C92E671664C} = {E4203FE1-0F2D-4B98-8859-6CA5C31EC74D}
 		{59868CCF-F94C-47B9-A3C3-56A230EAD1EE} = {20A0981D-853F-4648-9E77-74F8FBB349E5}
 		{405B4299-8027-4A44-9192-560A047B20E9} = {E4203FE1-0F2D-4B98-8859-6CA5C31EC74D}
+		{A3D1E714-A383-4D52-A88A-4DB9EA172305} = {998B9FBB-8648-4E84-B92C-E2A6AB4AE992}
 	EndGlobalSection
 EndGlobal

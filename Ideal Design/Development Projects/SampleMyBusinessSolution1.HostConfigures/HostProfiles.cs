@@ -9,22 +9,48 @@ namespace SampleMyBusinessSolution1.HostConfigures
 {
 	public static class HostProfiles
 	{
-		public static ServiceHostConfigure ServiceHostConfigure { get; set; }
+		static ServiceHostConfigure _serviceHostConfigure = new ServiceHostConfigure();
 
-		public static WebSiteConfigure WebSiteConfigure { get; set; }
+		static WebSiteConfigure _webSiteConfigure = new WebSiteConfigure();
 
 
-		static TestingConfigure _TestingConfigure = new TestingConfigure();
+		static TestingConfigure _testingConfigure = new TestingConfigure();
 		public static TestingConfigure TestingConfigure
 		{
 			get
 			{
-				return _TestingConfigure;
+				return _testingConfigure;
 			}
 
 			set
 			{
-				_TestingConfigure = value;
+				_testingConfigure = value;
+			}
+		}
+
+		public static ServiceHostConfigure ServiceHostConfigure
+		{
+			get
+			{
+				return _serviceHostConfigure;
+			}
+
+			set
+			{
+				_serviceHostConfigure = value;
+			}
+		}
+
+		public static WebSiteConfigure WebSiteConfigure
+		{
+			get
+			{
+				return _webSiteConfigure;
+			}
+
+			set
+			{
+				_webSiteConfigure = value;
 			}
 		}
 	}
