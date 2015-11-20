@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DEAD.Logging.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\DEAD.Logging.Interfaces.0.0.1-prerelease\lib\net45\DEAD.Logging.Interfaces.dll</HintPath>
+      <HintPath>..\..\..\packages\DEAD.Logging.Interfaces.0.0.2\lib\net45\DEAD.Logging.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">

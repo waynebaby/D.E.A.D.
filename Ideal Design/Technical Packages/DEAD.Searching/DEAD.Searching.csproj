@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DEAD.Searching.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\DEAD.Searching.Interfaces.0.0.1-prerelease\lib\net45\DEAD.Searching.Interfaces.dll</HintPath>
+      <HintPath>..\..\..\packages\DEAD.Searching.Interfaces.0.0.2\lib\net45\DEAD.Searching.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

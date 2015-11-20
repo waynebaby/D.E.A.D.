@@ -14,7 +14,7 @@ namespace DEAD.DomainPatterns
 
 		object GetUOWCore();
 		ITransaction BeginTransaction();
-		//ITransaction BeginTransaction(System.Data.IsolationLevel level);
+		ITransaction BeginTransaction(System.Data.IsolationLevel level);
 
 
 		IRepository<T> GetRepository<T>() where T : class;

@@ -45,7 +45,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="DEAD.DomainPatterns.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\DEAD.DomainPatterns.Interfaces.0.0.1-prerelease\lib\net45\DEAD.DomainPatterns.Interfaces.dll</HintPath>
+      <HintPath>..\..\..\packages\DEAD.DomainPatterns.Interfaces.0.0.3\lib\net45\DEAD.DomainPatterns.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
