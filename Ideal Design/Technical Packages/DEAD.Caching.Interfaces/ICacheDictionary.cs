@@ -19,6 +19,10 @@ namespace DEAD.Caching
 
 	public interface ICacheDictionary : IDisposable
 	{
+		Guid CurrentVersion { get; }
+
+		ICacheGroup CurrentGroup { get; }
+
 		void ForceExpireAll();
 		string Name { get; }
 
@@ -33,7 +37,7 @@ namespace DEAD.Caching
 
 		//public override CacheItem GetCacheItem(string key, string regionName = null);
 
-		long GetCount(string regionName = null);
+		long GetCount();
 
 		IDictionary<string, object> GetValues(IEnumerable<string> keys);
 

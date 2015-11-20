@@ -31,11 +31,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DEAD.Caching.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\DEAD.Caching.Interfaces.0.0.2\lib\net45\DEAD.Caching.Interfaces.dll</HintPath>
+      <HintPath>..\..\..\packages\DEAD.Caching.Interfaces.0.0.5-prelease\lib\net45\DEAD.Caching.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheDictionaryBase.cs" />
+    <Compile Include="LocalMemory\LocalMemoryCacheGroup.cs" />
+    <Compile Include="LocalMemory\LocalMemoryCacheDictionary.cs" />
+    <Compile Include="ObjectCacheBasedCacheDictionaryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
