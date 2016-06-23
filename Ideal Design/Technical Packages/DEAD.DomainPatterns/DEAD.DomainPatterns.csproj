@@ -31,15 +31,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DEAD.DependencyInjection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\DEAD.DependencyInjection.0.0.6-prerelease\lib\net45\DEAD.DependencyInjection.dll</HintPath>
+      <HintPath>..\packages\DEAD.DependencyInjection.0.0.1\lib\net45\DEAD.DependencyInjection.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DEAD.DependencyInjection.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\DEAD.DependencyInjection.Interfaces.0.0.4-prerelease\lib\net45\DEAD.DependencyInjection.Interfaces.dll</HintPath>
+      <HintPath>..\packages\DEAD.DependencyInjection.Interfaces.0.0.1\lib\net45\DEAD.DependencyInjection.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DEAD.DomainPatterns.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\DEAD.DomainPatterns.Interfaces.0.0.3\lib\net45\DEAD.DomainPatterns.Interfaces.dll</HintPath>
+      <HintPath>..\packages\DEAD.DomainPatterns.Interfaces.0.0.1\lib\net45\DEAD.DomainPatterns.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
