@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using DEAD.DependencyInjection;
-using DEAD.DomainPatterns;
+
 using SampleMyBusinessSolution1.Contracts;
 using SampleMyBusinessSolution1.Models;
 using System;
