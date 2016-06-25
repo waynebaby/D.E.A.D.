@@ -1,16 +1,15 @@
 ﻿using AutoMapper;
-
 using SampleMyBusinessSolution1.Contracts;
 using SampleMyBusinessSolution1.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using DEAD.DomainPatterns;
+using DEAD.DependencyInjection;
+
 namespace SampleMyBusinessSolution1.Services
 {
-	public class GroupService : IGroupService
+    public class GroupService : IGroupService
 	{
 		public async Task<Group> AddGroupAsync(Group group)
 		{
