@@ -187,6 +187,9 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+
 /Ideal Design/Development Projects/.vs/*
 /Ideal Design/Development Projects/packages/*
-
+DEADExport/
+TechPackagesOutput/
