@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
-
 using System.Reflection;
+using DEAD.DomainPatterns;
+using System.Threading;
 
 namespace DEAD.DomainPatterns.EF
 {

@@ -50,8 +50,18 @@ namespace DEAD.DomainPatterns
 		/// <returns></returns>
 		IEnumerable<T> RemoveRange(IEnumerable<T> items);
 
-		T AttachAndRefresh(T item);
-		Task<T> AttachAndRefreshAsync(T item, CancellationToken cancellationToken);
+		T AttachAndMarkChangesOrAdd(T item);
+
+		T[] AttachAndMarkChangesOrAdd(params T[] items);
+
+		Task<T> AttachAndMarkChangesOrAddAsync(T item);
+
+		Task<T[]> AttachAndMarkChangesOrAddAsync(params T[] items);
+
+		T AttachAndCancelChanges(T item);
+		Task<T> AttachAndCancelChangesAsync(T item, CancellationToken cancellationToken = default(CancellationToken)); 
+		T[] AttachAndCancelChanges(params T[] items);
+		Task<T[]> AttachAndCancelChangesAsync(T[] items, CancellationToken cancellationToken = default(CancellationToken));
 
 		T Detach(T item);
 

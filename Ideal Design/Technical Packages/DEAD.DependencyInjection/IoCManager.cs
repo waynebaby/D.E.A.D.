@@ -1,7 +1,10 @@
-﻿using System;
+﻿using DEAD.DependencyInjection;
+using DEAD.DependencyInjection.Implementations;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +22,10 @@ namespace DEAD.DependencyInjection
             core = new ConcurrentDictionary<string, IIoCContainer>();
             Containers = new ReadOnlyDictionary<string, IIoCContainer>(core);
 
-        }
-        ConcurrentDictionary<string, IIoCContainer> core;
-        public IReadOnlyDictionary<string, IIoCContainer> Containers { get; private set; }
+		}
+		ConcurrentDictionary<string, IIoCContainer> core;
+		public IDictionary<string, IIoCContainer> Containers { get; private set; }
+
 
         public IIoCContainer DefualtContainer
         {
@@ -31,11 +35,12 @@ namespace DEAD.DependencyInjection
             }
         }
 
-        public void ConfigureContianer(string name, Func<IIoCContainer> factory)
-        {
-            var v = factory();
-            core.AddOrUpdate(name, v, (_1, _2) => v);
-        }
+		public void ConfigureContianer(string name, Func<IIoCContainer> factory)
+		{
+			var v = factory();
+			v.Context =v.Context?? new IoCContext(this, ContextBag);
+			core.AddOrUpdate(name, v, (_1, _2) => v);
+		}
 
         public void ConfigureDefaultContianer(Func<IIoCContainer> factory)
         {
@@ -45,7 +50,11 @@ namespace DEAD.DependencyInjection
 
         public static IoCManager Instance { get; set; }
 
+		public string Name
+		{
+			get; set;
+		}
 
-
-    }
+		public dynamic ContextBag { get; } = new ExpandoObject();
+	}
 }

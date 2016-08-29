@@ -80,6 +80,8 @@
     <Compile Include="EF\EFTransaction.cs" />
     <Compile Include="EF\EFUnitOfWork.cs" />
     <Compile Include="EF\IEFUnitOfWork.cs" />
+    <Compile Include="EF\MirgrationDisabledMappedDbContext.cs" />
+    <Compile Include="EF\TestingMappedDbContext.cs" />
     <Compile Include="EF\MappedDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -90,7 +92,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PackageVersions.xml" />
+    <Content Include="PackageVersions.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

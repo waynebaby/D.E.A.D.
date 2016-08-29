@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IIoCContainer.cs" />
+    <Compile Include="IIoCContexted.cs" />
     <Compile Include="IIoCManager.cs" />
     <Compile Include="IIoCConfigure.cs" />
+    <Compile Include="IIoCContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

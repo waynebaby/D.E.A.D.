@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +7,19 @@ using System.Threading.Tasks;
 
 namespace DEAD.DependencyInjection.Implementations
 {
-	public class UnityIoCContainer : IIoCContainer
+	public class UnityIoCContainer : IoCContainerBase
 	{
-		IUnityContainer _container = new UnityContainer();
-		public object GetContainerCore(Type containerCoreType)
+	  
+		protected IUnityContainer _container = new UnityContainer();
+
+		public UnityIoCContainer(IIoCContext context) : base(context)
+		{
+
+		}
+
+
+
+		public override object GetContainerCore(Type containerCoreType)
 		{
 			if (typeof(IUnityContainer).IsAssignableFrom(containerCoreType))
 			{
@@ -19,32 +28,66 @@ namespace DEAD.DependencyInjection.Implementations
 			return null;
 		}
 
-		public TContainerCore GetContainerCore<TContainerCore>() where TContainerCore : class
+		public override TContainerCore GetContainerCore<TContainerCore>() 
 		{
 			return _container as TContainerCore;
 		}
 
-		public IIoCContainer RegisterInstance(Type t, string name, object instance)
+		public override IIoCContainer RegisterInstance(Type t, string name, object instance)
 		{
 			_container.RegisterInstance(t, name, instance, new ContainerControlledLifetimeManager());
 			return this;
 		}
 
-		public IIoCContainer RegisterType(Type from, Type to, string name)
+		public override IIoCContainer RegisterType(Type from, Type to, string name)
 		{
-			_container.RegisterType(from, to, name);
+			if (typeof(IIoCContexted).IsAssignableFrom(to))
+			{
+
+				_container.RegisterType(from, to, name, new InjectionProperty(nameof(expBody.IoCContext), Context));
+			}
+			else
+			{
+
+				_container.RegisterType(from, to, name);
+			}
+
 			return this;
 		}
 
-		public object Resolve(Type t, string name)
-		{
-			return _container.Resolve(t, name);
-		}
+		IIoCContexted expBody = null;
 
+
+
+		public override object Resolve(Type t, string name)
+		{
+			var rval = _container.Resolve(t, name);
+			FillContextIfNeed(rval);
+			return rval;
+		}
 
 		public IEnumerable<object> ResolveAll(Type t)
 		{
-			return _container.ResolveAll(t);
+			var rvals = _container.ResolveAll(t)
+				.Select(
+					x =>
+					{
+						FillContextIfNeed(x);
+						return x;
+					});
+
+			return rvals;
 		}
+
+
+		private void FillContextIfNeed(object rval)
+		{
+			var icrval = rval as IIoCContexted;
+			if (icrval!=null && icrval.IoCContext==null)
+			{
+				icrval.IoCContext = this.Context;
+			}
+		}
+
 	}
 }

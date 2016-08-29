@@ -59,6 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\IoCContext.cs" />
+    <Compile Include="IoCContainerBase.cs" />
+    <Compile Include="IoCContextedExtensions.cs" />
     <Compile Include="ContainerExtensions.cs" />
     <Compile Include="IoCManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

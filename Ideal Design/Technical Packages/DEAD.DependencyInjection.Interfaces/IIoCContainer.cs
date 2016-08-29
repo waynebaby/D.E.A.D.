@@ -17,5 +17,7 @@ namespace DEAD.DependencyInjection
 
 		Object Resolve(Type t, string name);
 
+		IIoCContext Context { get; set; }
+
 	}
 }
