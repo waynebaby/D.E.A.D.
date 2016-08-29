@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace DEAD.Logging
 {
-	public abstract class LoggerBase : ILogger
+	public abstract class ChannelBase<TLevel> : IChannel<TLevel>
 	{
+		public abstract TLevel Level { get; }
 		public abstract string Name { get; }
 		public abstract long QueueSize { get; }
 
@@ -17,4 +18,6 @@ namespace DEAD.Logging
 		public abstract void Log(Action<StringBuilder> buildAction, [CallerMemberName] string member = null, [CallerLineNumber] int line = -1, [CallerFilePath] string filePath = null);
 		public abstract void Log(string message, [CallerMemberName] string member = null, [CallerLineNumber] int line = -1, [CallerFilePath] string filePath = null);
 	}
+
+
 }

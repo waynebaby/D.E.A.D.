@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ILogger.cs" />
-    <Compile Include="ILoggerHub.cs" />
+    <Compile Include="IChannel.cs" />
+    <Compile Include="ILoggers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

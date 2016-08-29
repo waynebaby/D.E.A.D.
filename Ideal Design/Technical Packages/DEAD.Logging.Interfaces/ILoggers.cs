@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DEAD.Logging
 {
-	public interface ILoggerHub<TLevel>
+	public interface ILoggers<TLevel>
 	{
-		ILogger this[TLevel level] { get; }		   
+		IChannel<TLevel> this[TLevel level] { get; }	  
 
 	}
 }
