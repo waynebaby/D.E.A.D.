@@ -50,6 +50,7 @@
     <Compile Include="LoggerBase.cs" />
     <Compile Include="LoggerHubBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardLevels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PackageVersions.xml" />
