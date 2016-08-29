@@ -20,7 +20,7 @@ namespace DEAD.DomainPatterns.EF
 		protected DbSet<T> _dbSet;
 		protected ObjectContext _objectContext;
 
-	
+
 
 
 		/// <summary>
@@ -116,24 +116,14 @@ namespace DEAD.DomainPatterns.EF
 			return _dbSet.RemoveRange(items);
 		}
 
-		public T AttachAndRefresh(T item)
-		{
-			item = _dbSet.Attach(item);
-			_objectContext.Refresh(RefreshMode.ClientWins, item);
-			return item;
-		}
+
 
 		public T Detach(T item)
 		{
 			_objectContext.Detach(item);
 			return item;
 		}
-		public async Task<T> AttachAndRefreshAsync(T item, System.Threading.CancellationToken cancellationToken)
-		{
-			item = _dbSet.Attach(item);
-			await _objectContext.RefreshAsync(RefreshMode.ClientWins, item, cancellationToken);
-			return item;
-		}
+
 
 
 
@@ -142,5 +132,103 @@ namespace DEAD.DomainPatterns.EF
 		{
 			return (EntityState)(int)UnitOfWork.Context.Entry(item).State;
 		}
+
+
+
+
+		public T AttachAndCancelChanges(T item)
+		{
+			item = _dbSet.Attach(item);
+			_objectContext.Refresh(RefreshMode.StoreWins, item);
+			return item;
+		}
+
+		public async Task<T> AttachAndCancelChangesAsync(T item, CancellationToken cancellationToken)
+		{
+			item = _dbSet.Attach(item);
+			await _objectContext.RefreshAsync(RefreshMode.StoreWins, item, cancellationToken);
+			return item;
+		}
+
+		public T[] AttachAndCancelChanges(params T[] items)
+		{
+			items = items.Select(x => _dbSet.Attach(x)).ToArray();
+			_objectContext.Refresh(RefreshMode.StoreWins, items);
+			return items;
+		}
+
+		public async Task<T[]> AttachAndCancelChangesAsync(T[] items, CancellationToken cancellationToken)
+		{
+			items = items.Select(x => _dbSet.Attach(x)).ToArray();
+			await _objectContext.RefreshAsync(RefreshMode.StoreWins, items, cancellationToken);
+			return items;
+		}
+
+
+		public T AttachAndMarkChangesOrAdd(T item)
+		{
+			item = _dbSet.Attach(item);
+			if (UnitOfWork.Context.Entry(item).GetDatabaseValues() != null)
+			{
+				UnitOfWork.Context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+			}
+			else
+			{
+				Add(item);
+			}
+			return item;
+		}
+
+		public T[] AttachAndMarkChangesOrAdd(params T[] items)
+		{
+			items = items.Select(x =>
+			{
+				_dbSet.Attach(x);
+				if (UnitOfWork.Context.Entry(x).GetDatabaseValues() != null)
+				{
+					UnitOfWork.Context.Entry(x).State = System.Data.Entity.EntityState.Modified;
+				}
+				else
+				{
+					Add(x);
+				}
+				return x;
+			}).ToArray();
+			return items;
+		}
+
+
+
+		public async Task<T> AttachAndMarkChangesOrAddAsync(T item)
+		{
+			item = _dbSet.Attach(item);
+			if ( null!= await UnitOfWork.Context.Entry(item).GetDatabaseValuesAsync())
+			{
+				UnitOfWork.Context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+			}
+			else
+			{
+				Add(item);
+			}
+			return item;
+		}
+
+		public async Task<T[]> AttachAndMarkChangesOrAddAsync(params T[] items)
+		{
+			foreach (var x in items)
+			{
+				_dbSet.Attach(x);
+				if (null!= await UnitOfWork.Context.Entry(x).GetDatabaseValuesAsync())
+				{
+					UnitOfWork.Context.Entry(x).State = System.Data.Entity.EntityState.Modified;
+				}
+				else
+				{
+					Add(x);
+				}
+			}
+			return items;
+		}
+
 	}
 }
