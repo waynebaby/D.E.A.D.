@@ -1,56 +1,33 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DEAD.Logging.Log4Net
+namespace DEAD.Logging.Log4net
 {
-    public class Log4NetChannel<TLevel> : ChannelBase<TLevel>
+    public abstract class Log4netChannelBase : DiscretedChannelBase
     {
-        public override TLevel Level
+        public Log4netChannelBase(string name, ILog log4netLogger) : base(name, -1)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            _l4nLogger = log4netLogger;
         }
 
-        public override string Name
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        protected ILog _l4nLogger;
 
-        public override long QueueSize
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
 
         public override void Flush()
         {
-            throw new NotImplementedException();
+            
         }
 
-        public override Task FlushAsync()
+        public override async Task FlushAsync()
         {
-            throw new NotImplementedException();
+            await Task.Yield(); 
         }
 
-        public override void Log(string message, [CallerMemberName] string member = null, [CallerLineNumber] int line = -1, [CallerFilePath] string filePath = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Log(Action<StringBuilder> buildAction, [CallerMemberName] string member = null, [CallerLineNumber] int line = -1, [CallerFilePath] string filePath = null)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

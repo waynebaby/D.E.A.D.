@@ -35,4 +35,6 @@ namespace DEAD.Logging.EventLog
         abstract protected EventLogEntryType EventLogEntryType { get; }
 
     }
+
+
 }

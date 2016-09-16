@@ -77,6 +77,9 @@
   <ItemGroup>
     <Compile Include="ChannelBase.cs" />
     <Compile Include="EventLog\EventLogChannelBase.cs" />
+    <Compile Include="EventLog\EventLogStandardChannel.cs" />
+    <Compile Include="Log4net\Log4netChannel.cs" />
+    <Compile Include="Log4net\Log4netStandardChannel.cs" />
     <Compile Include="LoggerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

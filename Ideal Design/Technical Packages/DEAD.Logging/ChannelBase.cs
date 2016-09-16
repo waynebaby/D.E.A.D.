@@ -88,13 +88,16 @@ namespace DEAD.Logging
         public string FilePath;
         public string GetOrBuildMessage()
         {
-            if (StringBuilderAction != null)
-            {
-                var sb = new StringBuilder();
-                StringBuilderAction(sb);
-                MessageResult = sb.ToString();
-                StringBuilderAction = null;
-            }
+
+            var sb = new StringBuilder();
+            StringBuilderAction?.Invoke(sb);
+            sb
+                .AppendLine()
+                .AppendFormat("calling member {0}, line {1}, file: {2}",Member,Line,FilePath)
+                .AppendLine();
+            MessageResult = sb.ToString();
+            StringBuilderAction = null;
+
             return MessageResult;
         }
     }
