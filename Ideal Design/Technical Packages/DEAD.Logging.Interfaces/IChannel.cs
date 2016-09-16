@@ -24,8 +24,8 @@ namespace DEAD.Logging
 
 	}
 
-	public interface IChannel<TLevel> : IChannel
-	{
+	public interface IChannel<TLevel> : IChannel where TLevel : struct
+    {
 		TLevel Level { get; }
 
 	}

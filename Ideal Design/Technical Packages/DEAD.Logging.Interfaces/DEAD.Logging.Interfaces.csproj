@@ -35,8 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IChannel.cs" />
-    <Compile Include="ILoggers.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="IStandardLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardLevels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PackageVersions.xml" />

@@ -1,3 +1,4 @@
+using DEAD.Logging;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -8,22 +9,33 @@ using System.Threading.Tasks;
 
 namespace DEAD.DependencyInjection
 {
-	public static class IoCContextedExtensions
-	{
+    public static class IoCContextedExtensions
+    {
 
-		public static IIoCManager GetIoCManager(this IIoCContexted source)
-		{
-			var rval = source?.IoCContext?.Manager;
-			if (rval == null)
-			{
-				Debug.Print($"IIoCContexted instance or its path 'IoCContext?.Manager' is null, returning the global singleton instance \r\n\t object:{source?.GetType()?.ToString() ?? "null"} \r\t\n stack trace: {new StackTrace().ToString()}");
-				rval = IoCManager.Instance;
-			}
+        public static IIoCManager GetIoCManager(this IIoCContexted source)
+        {
+            var rval = source?.IoCContext?.Manager;
+            if (rval == null)
+            {
+                Debug.Print($"IIoCContexted instance or its path 'IoCContext?.Manager' is null, returning the global singleton instance \r\n\t object:{source?.GetType()?.ToString() ?? "null"} \r\t\n stack trace: {new StackTrace().ToString()}");
+                rval = IoCManager.Instance;
+            }
 
-			return rval;
+            return rval;
 
-		}
+        }
 
-	}
+        public static IStandardLogger ResolveLogger(this IIoCContexted source)
+        {
+            var logger = source.GetIoCManager().DefualtContainer.Resolve<IStandardLogger>();
+            return logger;
+        }
+        public static ILogger<TLevel> ResolveLogger<TLevel>(this IIoCContexted source) where TLevel:struct
+        {
+            var logger = source.GetIoCManager().DefualtContainer.Resolve<ILogger<TLevel>>();
+            return logger;
+        }
+
+    }
 
 }
