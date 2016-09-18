@@ -13,6 +13,7 @@ using SampleMyBusinessSolution1.Models.Mapping;
 using DEAD.DomainPatterns;
 using SampleMyBusinessSolution1.Contracts;
 using SampleMyBusinessSolution1.Services;
+using System.Dynamic;
 
 namespace SampleMyBusinessSolution1.HostConfigures.Configures
 {
@@ -35,7 +36,7 @@ namespace SampleMyBusinessSolution1.HostConfigures.Configures
 				() =>
 				{
 					//新的IoC容器
-					var c = new UnityIoCContainer();
+					var c = new UnityIoCContainer(new IoCContext(manager,new ExpandoObject()));
 
 					//注册一个自定义的connection string 
 					c.GetContainerCore<IUnityContainer>()
