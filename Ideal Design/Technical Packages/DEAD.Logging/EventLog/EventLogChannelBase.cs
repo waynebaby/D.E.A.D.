@@ -9,7 +9,7 @@ using System.Threading.Tasks.Dataflow;
 using el = System.Diagnostics.EventLog;
 namespace DEAD.Logging.EventLog
 {
-    public abstract class EventLogChannelBase : DiscretedChannelBase
+    public abstract class EventLogChannelBase<TLevel> : DiscretedChannelBase<TLevel> where TLevel : struct
     {
         public EventLogChannelBase(string name) : base(name, -1)
         {

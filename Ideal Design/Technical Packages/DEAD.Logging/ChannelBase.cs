@@ -8,7 +8,7 @@ using System.Threading.Tasks.Dataflow;
 
 namespace DEAD.Logging
 {
-    public abstract class ChannelBase : IChannel
+    public abstract class ChannelBase<TLevel> : IChannel<TLevel> where TLevel : struct
     {
 
 
@@ -28,6 +28,11 @@ namespace DEAD.Logging
         public virtual string Name { get; protected internal set; }
         public abstract long QueueSize { get; }
 
+        public TLevel Level
+        {
+            get; protected set;
+        }
+
         public abstract void Flush();
         public abstract Task FlushAsync();
         public virtual void Log(Action<StringBuilder> buildAction, [CallerMemberName] string member = null, [CallerLineNumber] int line = -1, [CallerFilePath] string filePath = null)
@@ -39,7 +44,8 @@ namespace DEAD.Logging
                 FilePath = filePath,
                 Line = line,
                 Member = member,
-                MessageResult = null
+                MessageResult = null,
+                Level = LoggerBase<TLevel>.GetOrCreateCachedString(Level)
             });
 
         }
@@ -51,7 +57,8 @@ namespace DEAD.Logging
                 FilePath = filePath,
                 Line = line,
                 Member = member,
-                MessageResult = message
+                MessageResult = message,
+                Level = LoggerBase<TLevel>.GetOrCreateCachedString(Level)
             });
 
         }
@@ -59,7 +66,7 @@ namespace DEAD.Logging
 
     }
 
-    public abstract class DiscretedChannelBase : ChannelBase
+    public abstract class DiscretedChannelBase<TLevel> : ChannelBase<TLevel> where TLevel : struct
     {
         public DiscretedChannelBase(string name, int maxDegreeOfParallelism) : base(name, null)
         {
@@ -86,14 +93,15 @@ namespace DEAD.Logging
         public string Member;
         public int Line;
         public string FilePath;
+        public string Level;
         public string GetOrBuildMessage()
         {
 
             var sb = new StringBuilder();
             StringBuilderAction?.Invoke(sb);
             sb
-                .AppendLine()
-                .AppendFormat("calling member {0}, line {1}, file: {2}",Member,Line,FilePath)
+                .Append("Level:").Append(Level).AppendLine()
+                .AppendFormat("calling member {0}, line {1}, file: {2}", Member, Line, FilePath)
                 .AppendLine();
             MessageResult = sb.ToString();
             StringBuilderAction = null;

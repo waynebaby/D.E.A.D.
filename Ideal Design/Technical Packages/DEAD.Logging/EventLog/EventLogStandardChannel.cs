@@ -7,17 +7,14 @@ using System.Threading.Tasks;
 
 namespace DEAD.Logging.EventLog
 {
-    public class EventLogStandardChannel : EventLogChannelBase, IChannel<StandardLevels>
+    public class EventLogStandardChannel : EventLogChannelBase<StandardLevels>, IChannel<StandardLevels>
     {
         public EventLogStandardChannel(string name, StandardLevels level) : base(name)
         {
             Level = level;
         }
 
-        public StandardLevels Level
-        {
-            get; protected set;
-        }
+
 
         protected override EventLogEntryType EventLogEntryType
         {

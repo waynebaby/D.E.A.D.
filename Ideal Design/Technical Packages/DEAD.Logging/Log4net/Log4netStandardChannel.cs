@@ -7,18 +7,13 @@ using log4net;
 
 namespace DEAD.Logging.Log4net
 {
-    public class Log4netStandardChannel : Log4netChannelBase, IChannel<StandardLevels>
+    public class Log4netStandardChannel : Log4netChannelBase<StandardLevels>, IChannel<StandardLevels>
     {
         public Log4netStandardChannel(string name, StandardLevels level, ILog log4netLogger) : base(name, log4netLogger)
         {
             Level = level;
         }
 
-        public StandardLevels Level
-        {
-            get; protected set;
-
-        }
 
         protected override async Task OnWriteMessageAsync(LoggingMessage message)
         {

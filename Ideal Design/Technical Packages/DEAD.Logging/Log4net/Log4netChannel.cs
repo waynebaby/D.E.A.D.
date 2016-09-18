@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DEAD.Logging.Log4net
 {
-    public abstract class Log4netChannelBase : DiscretedChannelBase
+    public abstract class Log4netChannelBase<TLevel> : DiscretedChannelBase<TLevel> where TLevel : struct
     {
         public Log4netChannelBase(string name, ILog log4netLogger) : base(name, -1)
         {
@@ -20,14 +20,14 @@ namespace DEAD.Logging.Log4net
 
         public override void Flush()
         {
-            
+
         }
 
         public override async Task FlushAsync()
         {
-            await Task.Yield(); 
+            await Task.Yield();
         }
 
-        
+
     }
 }

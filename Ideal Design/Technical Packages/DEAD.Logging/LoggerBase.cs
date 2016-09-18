@@ -10,12 +10,21 @@ namespace DEAD.Logging
 {
     public abstract class LoggerBase<TLevel> : ILogger<TLevel>, IIoCContexted where TLevel : struct
     {
-        static protected Dictionary<TLevel, string> _NameCache
+        static protected  Dictionary<TLevel, string> _NameCache
               = new Dictionary<TLevel, string>();
 
         public virtual IChannel<TLevel> this[TLevel level]
         {
             get
+            {
+                string levelString = GetOrCreateCachedString(level);
+                return this.GetIoCManager().DefualtContainer.Resolve<IChannel<TLevel>>(levelString);
+            }
+        }
+
+        internal static string GetOrCreateCachedString(TLevel level)
+        {
+            lock (_NameCache)
             {
                 string levelString = null;
                 if (!_NameCache.TryGetValue(level, out levelString))
@@ -26,7 +35,7 @@ namespace DEAD.Logging
                         _NameCache[level] = levelString;
                     }
                 }
-                return this.GetIoCManager().DefualtContainer.Resolve<IChannel<TLevel>>(levelString);
+                return levelString;
             }
         }
 
