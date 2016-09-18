@@ -22,25 +22,33 @@ namespace DEAD.DependencyInjection
             core = new ConcurrentDictionary<string, IIoCContainer>();
             Containers = new ReadOnlyDictionary<string, IIoCContainer>(core);
 
-		}
-		ConcurrentDictionary<string, IIoCContainer> core;
-		public IDictionary<string, IIoCContainer> Containers { get; private set; }
+        }
+        ConcurrentDictionary<string, IIoCContainer> core;
+        public IDictionary<string, IIoCContainer> Containers { get; private set; }
 
 
         public IIoCContainer DefualtContainer
         {
             get
             {
-                return Containers[string.Empty];
+                var key = string.Empty;
+                IIoCContainer rval;
+
+                if (!Containers.TryGetValue(key, out rval))
+                {
+                    rval = new UnityIoCContainer(new IoCContext(this, new ExpandoObject()));
+                    ConfigureDefaultContianer(() => rval);
+                }
+                return rval;
             }
         }
 
-		public void ConfigureContianer(string name, Func<IIoCContainer> factory)
-		{
-			var v = factory();
-			v.Context =v.Context?? new IoCContext(this, ContextBag);
-			core.AddOrUpdate(name, v, (_1, _2) => v);
-		}
+        public void ConfigureContianer(string name, Func<IIoCContainer> factory)
+        {
+            var v = factory();
+            v.Context = v.Context ?? new IoCContext(this, ContextBag);
+            core.AddOrUpdate(name, v, (_1, _2) => v);
+        }
 
         public void ConfigureDefaultContianer(Func<IIoCContainer> factory)
         {
@@ -50,11 +58,11 @@ namespace DEAD.DependencyInjection
 
         public static IoCManager Instance { get; set; }
 
-		public string Name
-		{
-			get; set;
-		}
+        public string Name
+        {
+            get; set;
+        }
 
-		public dynamic ContextBag { get; } = new ExpandoObject();
-	}
+        public dynamic ContextBag { get; } = new ExpandoObject();
+    }
 }

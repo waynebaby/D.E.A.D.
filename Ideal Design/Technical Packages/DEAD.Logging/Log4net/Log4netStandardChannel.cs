@@ -17,7 +17,7 @@ namespace DEAD.Logging.Log4net
 
         protected override async Task OnWriteMessageAsync(LoggingMessage message)
         {
-            var msg = message.GetOrBuildMessage();
+            var msg = message.ToString();
             switch (Level)
             {
                 case StandardLevels.Critical:

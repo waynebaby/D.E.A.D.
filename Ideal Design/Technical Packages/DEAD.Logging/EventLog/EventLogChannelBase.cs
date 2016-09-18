@@ -27,7 +27,7 @@ namespace DEAD.Logging.EventLog
 
         protected override async Task OnWriteMessageAsync(LoggingMessage message)
         {
-            var msg = message.GetOrBuildMessage();
+            var msg = message.ToString();
             el.WriteEntry(Name, msg, EventLogEntryType);
             await Task.Yield();
         }

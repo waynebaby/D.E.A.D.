@@ -37,6 +37,7 @@
     <Compile Include="IChannel.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="IStandardLogger.cs" />
+    <Compile Include="LoggingMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StandardLevels.cs" />
   </ItemGroup>
