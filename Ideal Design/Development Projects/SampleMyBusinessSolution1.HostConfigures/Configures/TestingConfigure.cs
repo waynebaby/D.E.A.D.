@@ -14,6 +14,7 @@ using DEAD.DomainPatterns;
 using SampleMyBusinessSolution1.Contracts;
 using SampleMyBusinessSolution1.Services;
 using System.Dynamic;
+using DEAD.Logging;
 
 namespace SampleMyBusinessSolution1.HostConfigures.Configures
 {
@@ -58,8 +59,12 @@ namespace SampleMyBusinessSolution1.HostConfigures.Configures
 					//注册业务组件实现
 					c.RegisterType<IUserService, UserService>();
 					c.RegisterType<IGroupService, GroupService>();
+                    //注册Logger
+                    c.RegisterType<IStandardLogger, StandardLogger>();
+                    c.RegisterInstance<IChannel<StandardLevels>>("Debug",new DEAD.Logging.Log4net.Log4netStandardChannel("Debug",StandardLevels.Debug, log4net.LogManager.GetLogger("Debug")));
 
-					return c;
+
+                    return c;
 				});
 		}
 	}
