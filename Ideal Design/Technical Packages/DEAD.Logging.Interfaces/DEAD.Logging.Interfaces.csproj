@@ -56,12 +56,12 @@
       md lib
       md src
       cd
-      xcopy *$(ProjectName).dll lib\net45   /i /y
+      xcopy *$(ProjectName).dll lib\portable-net45+netcore45+wpa81+wp8  /i /y
       dir lib\*.*
 
       "$(ProjectDir)..\Files\nuget\BuildPublishPackage.cmd" "$(ProjectName)" "$(SolutionDir)\TechPackagesOutput"
 
-    </PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
