@@ -59,10 +59,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DEAD.Logging.Interfaces\DEAD.Logging.Interfaces.csproj">
-      <Project>{306d2cb1-a1ed-4d8e-b3b8-9776297f3e1d}</Project>
-      <Name>DEAD.Logging.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DEAD.Logging\DEAD.Logging.csproj">
       <Project>{dfdc970d-8287-4a38-a235-5df76b22554b}</Project>
       <Name>DEAD.Logging</Name>

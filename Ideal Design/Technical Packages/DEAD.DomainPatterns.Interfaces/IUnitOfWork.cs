@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace DEAD.DomainPatterns
 {
-	public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
 	{
 
 		object GetUOWCore();
@@ -41,8 +38,8 @@ namespace DEAD.DomainPatterns
 		Task<int> SubmitAsync(CancellationToken cancellationToken = default (CancellationToken));
 
 
-		DataSet ExecuteDataSet(string sqlQuery, params DbParameter[] parameters);
-		Task<DataSet> ExecuteDataSetAsync(string sqlQuery, params DbParameter[] parameters);
+		//DataSet ExecuteDataSet(string sqlQuery, params DbParameter[] parameters);
+		//Task<DataSet> ExecuteDataSetAsync(string sqlQuery, params DbParameter[] parameters);
 		IEnumerable<TEntity> SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters);
 		DbDataReader SqlQueryDataReader(string sqlQuery, params DbParameter[] parameters);
 		Task<DbDataReader> SqlQueryDataReaderAsync(string sqlQuery, params DbParameter[] parameters);
