@@ -10,7 +10,7 @@ namespace DEAD.DependencyInjection.Implementations
 	public class UnityIoCContainer : IoCContainerBase
 	{
 	  
-		protected IUnityContainer _container = new UnityContainer();
+		public IUnityContainer UnityContainer { get; protected set; } = new UnityContainer();
 
 		public UnityIoCContainer(IIoCContext context) : base(context)
 		{
@@ -23,19 +23,19 @@ namespace DEAD.DependencyInjection.Implementations
 		{
 			if (typeof(IUnityContainer).IsAssignableFrom(containerCoreType))
 			{
-				return _container;
+				return UnityContainer;
 			}
 			return null;
 		}
 
 		public override TContainerCore GetContainerCore<TContainerCore>() 
 		{
-			return _container as TContainerCore;
+			return UnityContainer as TContainerCore;
 		}
 
 		public override IIoCContainer RegisterInstance(Type t, string name, object instance)
 		{
-			_container.RegisterInstance(t, name, instance, new ContainerControlledLifetimeManager());
+            UnityContainer.RegisterInstance(t, name, instance, new ContainerControlledLifetimeManager());
 			return this;
 		}
 
@@ -44,12 +44,12 @@ namespace DEAD.DependencyInjection.Implementations
 			if (typeof(IIoCContexted).IsAssignableFrom(to))
 			{
 
-				_container.RegisterType(from, to, name, new InjectionProperty(nameof(expBody.IoCContext), Context));
+                UnityContainer.RegisterType(from, to, name, new InjectionProperty(nameof(expBody.IoCContext), Context));
 			}
 			else
 			{
 
-				_container.RegisterType(from, to, name);
+                UnityContainer.RegisterType(from, to, name);
 			}
 
 			return this;
@@ -61,14 +61,14 @@ namespace DEAD.DependencyInjection.Implementations
 
 		public override object Resolve(Type t, string name)
 		{
-			var rval = _container.Resolve(t, name);
+			var rval = UnityContainer.Resolve(t, name);
 			FillContextIfNeed(rval);
 			return rval;
 		}
 
 		public IEnumerable<object> ResolveAll(Type t)
 		{
-			var rvals = _container.ResolveAll(t)
+			var rvals = UnityContainer.ResolveAll(t)
 				.Select(
 					x =>
 					{

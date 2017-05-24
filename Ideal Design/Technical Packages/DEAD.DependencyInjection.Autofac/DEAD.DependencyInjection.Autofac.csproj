@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
-    <Version>0.0.1</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>0.0.1</Version>
+    <RootNamespace>DEAD.DependencyInjection</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -11,8 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DEAD.DependencyInjection.Interfaces" Version="0.0.1" />
-    <PackageReference Include="DEAD.Logging.Interfaces" Version="0.0.1" />
+    <PackageReference Include="Autofac" Version="4.6.0" />
+    <PackageReference Include="DEAD.DependencyInjection" Version="0.0.1" />
   </ItemGroup>
 
 </Project>

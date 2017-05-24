@@ -29,24 +29,13 @@ namespace DEAD.DependencyInjection
 
         public IIoCContainer DefualtContainer
         {
-            get
-            {
-                var key = string.Empty;
-                IIoCContainer rval;
-
-                if (!Containers.TryGetValue(key, out rval))
-                {
-                    rval = new UnityIoCContainer(new IoCContext(this, new ExpandoObject()));
-                    ConfigureDefaultContianer(() => rval);
-                }
-                return rval;
-            }
+            get; set;
         }
 
         public void ConfigureContianer(string name, Func<IIoCContainer> factory)
         {
             var v = factory();
-            v.Context = v.Context ?? new IoCContext(this, ContextBag);
+            v.Context = v.Context ?? new IoCContext(this, (object)ContextBag);// new IoCContext(this, ContextBag);
             core.AddOrUpdate(name, v, (_1, _2) => v);
         }
 

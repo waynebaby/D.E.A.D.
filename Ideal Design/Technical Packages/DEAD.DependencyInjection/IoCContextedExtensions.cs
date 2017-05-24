@@ -1,5 +1,4 @@
 using DEAD.Logging;
-using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,7 +16,6 @@ namespace DEAD.DependencyInjection
             var rval = source?.IoCContext?.Manager;
             if (rval == null)
             {
-                Debug.Print($"IIoCContexted instance or its path 'IoCContext?.Manager' is null, returning the global singleton instance \r\n\t object:{source?.GetType()?.ToString() ?? "null"} \r\t\n stack trace: {new StackTrace().ToString()}");
                 rval = IoCManager.Instance;
             }
 

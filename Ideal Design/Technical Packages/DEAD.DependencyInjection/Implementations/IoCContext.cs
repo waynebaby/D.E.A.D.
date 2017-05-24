@@ -10,12 +10,12 @@ namespace DEAD.DependencyInjection.Implementations
 	public class IoCContext : IIoCContext
 	{
 
-		public IoCContext(IIoCManager manager,object contextBag)
-		{
-			Manager = manager;
-			ContextBag = contextBag;
-		}
-		public dynamic ContextBag { get; private set; }
+        public IoCContext(IIoCManager manager, object contextBag)
+        {
+            Manager = manager;
+        ContextBag = contextBag;
+        }
+        public dynamic ContextBag { get; private set; }
 
 		public IIoCManager Manager
 		{
