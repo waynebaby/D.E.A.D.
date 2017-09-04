@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using System.Dynamic;
 
 namespace DEAD.Logging
 {
@@ -70,7 +71,20 @@ namespace DEAD.Logging
 
         }
 
+        public void Log(string message, string detailedInfomation, [CallerMemberName] string member = null, [CallerLineNumber] int line = -1, [CallerFilePath] string filePath = null)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Log(string message, ExpandoObject detailedInfomation, [CallerMemberName] string member = null, [CallerLineNumber] int line = -1, [CallerFilePath] string filePath = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Log(string message, Action<StringBuilder> detailedInfomationBuilder, [CallerMemberName] string member = null, [CallerLineNumber] int line = -1, [CallerFilePath] string filePath = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public abstract class DiscretedChannelBase<TLevel> : ChannelBase<TLevel> where TLevel : struct

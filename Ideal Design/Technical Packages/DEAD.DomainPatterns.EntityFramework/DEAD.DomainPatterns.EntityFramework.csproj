@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5FDB0177-785A-4A3F-9AC3-18DD492AC0B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DEAD.DomainPatterns.EntityFramework</RootNamespace>
+    <AssemblyName>DEAD.DomainPatterns.EntityFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DEAD.Caching.Interfaces, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DEAD.Caching.Interfaces.0.0.1\lib\netstandard2.0\DEAD.Caching.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="DEAD.DependencyInjection, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DEAD.DependencyInjection.0.0.1\lib\netstandard1.6\DEAD.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="DEAD.DependencyInjection.Interfaces, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DEAD.DependencyInjection.Interfaces.0.0.1\lib\netstandard2.0\DEAD.DependencyInjection.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="DEAD.DomainPatterns, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DEAD.DomainPatterns.0.0.1\lib\net45\DEAD.DomainPatterns.dll</HintPath>
+    </Reference>
+    <Reference Include="DEAD.DomainPatterns.Interfaces, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DEAD.DomainPatterns.Interfaces.0.0.1\lib\netstandard2.0\DEAD.DomainPatterns.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="DEAD.Logging, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DEAD.Logging.0.0.1\lib\netstandard2.0\DEAD.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.8.0\lib\netstandard2.0\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EF\EFRepository.cs" />
+    <Compile Include="EF\EFTransaction.cs" />
+    <Compile Include="EF\EFUnitOfWork.cs" />
+    <Compile Include="EF\IEFUnitOfWork.cs" />
+    <Compile Include="EF\MappedDbContext.cs" />
+    <Compile Include="EF\MirgrationDisabledMappedDbContext.cs" />
+    <Compile Include="EF\TestingMappedDbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PackageVersions.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+      xcopy "$(ProjectDir)..\Files\nuget\*.*" . /s  /i /y
+
+      "$(ProjectDir)..\ToolsForBuild" GenCurrentNuspec "$(ProjectDir)PackageVersions.xml" "$(ProjectName)"
+
+      md tools
+      md content
+      md lib
+      md src
+      cd
+      xcopy *$(ProjectName).dll lib\net45   /i /y
+      dir lib\*.*
+
+      "$(ProjectDir)..\Files\nuget\BuildPublishPackage.cmd" "$(ProjectName)" "$(SolutionDir)\TechPackagesOutput"
+
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,19 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>0.0.1</Version>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>D:\GitHub\D.E.A.D\Ideal Design\Technical Packages\TechPackagesOutput\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DEAD.DependencyInjection.Interfaces" Version="0.0.1" />
-    <PackageReference Include="DEAD.Logging.Interfaces" Version="0.0.1" />
+    <PackageReference Include="DEAD.Logging" Version="0.0.1" />
+    <PackageReference Include="log4net" Version="2.0.8" />
   </ItemGroup>
 
 </Project>

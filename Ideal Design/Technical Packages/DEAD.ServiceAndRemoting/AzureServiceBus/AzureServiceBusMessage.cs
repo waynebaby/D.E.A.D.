@@ -122,7 +122,7 @@ namespace DEAD.ServiceAndRemoting.AzureServiceBus
                 }
                 catch (Exception completeEx)
                 {
-                    this.ResolveLogger().Critical?.Log(string.Format("Complete faile,{0}", completeEx));
+                    this.ResolveLogger().Critical?.Log("",string.Format("Complete faile,{0}", completeEx));
 
 
                 }
@@ -148,7 +148,7 @@ namespace DEAD.ServiceAndRemoting.AzureServiceBus
             catch (Exception completeEx)
             {
 
-                this.ResolveLogger().Critical?.Log(string.Format("Complete faile,{0}", completeEx));
+                this.ResolveLogger().Critical?.Log("",string.Format("Complete faile,{0}", completeEx));
 
             }
         }
@@ -278,7 +278,7 @@ namespace DEAD.ServiceAndRemoting.AzureServiceBus
             }
             catch (Exception ex)
             {
-                this.ResolveLogger().Critical?.Log(string.Format("Error in  GetBodyType: {0}", ex));
+                this.ResolveLogger().Critical?.Log("",string.Format("Error in  GetBodyType: {0}", ex));
 
             }
 
