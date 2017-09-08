@@ -1,16 +1,18 @@
 ﻿
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace DEAD.DomainPatterns.EFCore
 {
 	public class EFTransaction : ITransaction, IDisposable
 	{
 		private EFUnitOfWork _uow;
-		private System.Data.Entity.DbContextTransaction _trans;
+		private IDbContextTransaction _trans;
 
 		public EFTransaction(EFUnitOfWork uow)
 		{
@@ -21,7 +23,7 @@ namespace DEAD.DomainPatterns.EFCore
 		public EFTransaction(EFUnitOfWork uow, System.Data.IsolationLevel level)
 		{
 			_uow = uow;
-			_trans = uow.Context.Database.BeginTransaction(level);
+			_trans = uow.Context.BeginTransaction(level);
 		}
 
 

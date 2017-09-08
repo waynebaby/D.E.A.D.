@@ -9,7 +9,7 @@ using System.Reflection;
 using DEAD.DomainPatterns;
 using System.Threading;
 
-namespace DEAD.DomainPatterns.EF
+namespace DEAD.DomainPatterns.EFCore
 {
 	/// <summary>
 	/// 资料库
@@ -124,9 +124,7 @@ namespace DEAD.DomainPatterns.EF
 			return item;
 		}
 
-
-
-
+        
 
 		public EntityState GetEntityState(T item)
 		{

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DEAD.DependencyInjection" Version="0.0.1" />
+    <PackageReference Include="DEAD.DomainPatterns.Interfaces" Version="0.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.4.0" />
+  </ItemGroup>
+
+</Project>
