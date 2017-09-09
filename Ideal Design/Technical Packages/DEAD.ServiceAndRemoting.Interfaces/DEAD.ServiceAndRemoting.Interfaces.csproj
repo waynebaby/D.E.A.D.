@@ -1,20 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PostBuildEvent>echo post ProjectDir is “$(ProjectDir)”
-</PostBuildEvent>
-    <PreBuildEvent>echo pre ProjectDir is “$(ProjectDir)”
-</PreBuildEvent>
+    <PostBuildEvent>
+      echo post ProjectDir is “$(ProjectDir)”
+    </PostBuildEvent>
+    <PreBuildEvent>
+      echo pre ProjectDir is “$(ProjectDir)”
+    </PreBuildEvent>
     <Version>0.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>D:\GitHub\D.E.A.D\Ideal Design\Technical Packages\TechPackagesOutput\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0</DefineConstants>
+    <OutputPath>bin\\</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
