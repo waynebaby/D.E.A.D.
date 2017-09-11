@@ -400,10 +400,7 @@ namespace DEAD.DomainPatterns.EFCore
             return list;
         }
 
-        public IEnumerable<TEntity> SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters) where TEntity :class
-        {
-            return _context.Set<TEntity>().AsQueryable<TEntity>().FromSql(sqlQuery ,parameters).AsQueryable<TEntity> ();         
-        }
+   
 
 
 
@@ -443,6 +440,10 @@ namespace DEAD.DomainPatterns.EFCore
 
         }
 
+        public IEnumerable<TEntity> SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters)
+        {
+            throw new NotImplementedException();
+        }
 
 
 

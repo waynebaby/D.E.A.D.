@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,7 +53,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>echo "$(TargetDir)$(TargetFileName)" gatherpackages "$(SolutionDir)" "$(SolutionDir)TechPackagesOutput"
-"$(TargetDir)$(TargetFileName)" gatherpackages "$(SolutionDir)" "$(SolutionDir)TechPackagesOutput"</PostBuildEvent>
+    <PostBuildEvent>
+ cd $(SolutionDir) 
+
+"$(TargetDir)$(TargetFileName)" gatherpackages  . .\TechPackagesOutput
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

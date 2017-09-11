@@ -13,7 +13,7 @@ namespace BuildMe_BuildAll
         static void Main(string[] args)
         {
             var cancel = new CancellationTokenSource();
-           Task.Run(()=> ConsoleInputCircle(cancel)); // if need console input.
+            var _ = Task.Run(() => ConsoleInputCircle(cancel)); // if need console input.
 
             ArgumentsHandlingAsync(args, cancel.Token).Wait(cancel.Token);
 
@@ -62,8 +62,10 @@ namespace BuildMe_BuildAll
 
                                 await Task.Run(() =>
                                 {
-                                    foreach (var file in Directory.EnumerateFiles(source, "*.nupkg", SearchOption.AllDirectories))
+                                    var di = new DirectoryInfo(source);
+                                    foreach (var fileInfo in di.EnumerateFiles("*.nupkg",  SearchOption.AllDirectories))
                                     {
+                                        var file = fileInfo.FullName;
                                         if (cancellationToken.IsCancellationRequested)
                                         {
                                             Console.WriteLine($"Operation cancelled by user.");
@@ -76,7 +78,7 @@ namespace BuildMe_BuildAll
 
                                             if (!string.Equals(file, destFile, StringComparison.CurrentCultureIgnoreCase))
                                             {
-                                                File.Copy (file, destFile,true);
+                                                File.Copy(file, destFile, true);
                                             }
 
                                             Console.WriteLine($"{file} have been moved to {destFile}");

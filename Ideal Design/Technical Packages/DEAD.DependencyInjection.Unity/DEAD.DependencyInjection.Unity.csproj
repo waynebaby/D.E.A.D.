@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DEAD.DependencyInjection, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DEAD.DependencyInjection.0.0.1\lib\netstandard2.0\DEAD.DependencyInjection.dll</HintPath>
+      <HintPath>..\packages\DEAD.DependencyInjection.0.0.1\lib\netstandard1.6\DEAD.DependencyInjection.dll</HintPath>
     </Reference>
     <Reference Include="DEAD.DependencyInjection.Interfaces, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DEAD.DependencyInjection.Interfaces.0.0.1\lib\netstandard2.0\DEAD.DependencyInjection.Interfaces.dll</HintPath>
