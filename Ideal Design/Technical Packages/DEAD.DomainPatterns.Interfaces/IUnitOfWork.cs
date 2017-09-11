@@ -40,7 +40,7 @@ namespace DEAD.DomainPatterns
 
 		//DataSet ExecuteDataSet(string sqlQuery, params DbParameter[] parameters);
 		//Task<DataSet> ExecuteDataSetAsync(string sqlQuery, params DbParameter[] parameters);
-		IEnumerable<TEntity> SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters);
+		IEnumerable<TEntity> SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters) where TEntity: class;
 		DbDataReader SqlQueryDataReader(string sqlQuery, params DbParameter[] parameters);
 		Task<DbDataReader> SqlQueryDataReaderAsync(string sqlQuery, params DbParameter[] parameters);
 		IEnumerable<TDictEntity> SqlQueryDynamically<TDictEntity>(string sqlQuery, params DbParameter[] parameters) where TDictEntity : IDictionary<string, object>, new();
