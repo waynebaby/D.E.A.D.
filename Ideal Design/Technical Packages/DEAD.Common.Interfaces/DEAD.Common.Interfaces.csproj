@@ -15,4 +15,8 @@
     <DefineConstants>TRACE;NETSTANDARD2_0</DefineConstants>
     <OutputPath>bin\\</OutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Update="NETStandard.Library" Version="2.0.0" />
+  </ItemGroup>
 </Project>

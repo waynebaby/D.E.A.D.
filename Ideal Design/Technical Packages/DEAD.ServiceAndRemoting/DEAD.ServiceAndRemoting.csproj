@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DEAD.DependencyInjection, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DEAD.DependencyInjection.0.0.1\lib\netstandard1.6\DEAD.DependencyInjection.dll</HintPath>
+      <HintPath>..\packages\DEAD.DependencyInjection.0.0.1\lib\netstandard2.0\DEAD.DependencyInjection.dll</HintPath>
     </Reference>
     <Reference Include="DEAD.DependencyInjection.Interfaces, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DEAD.DependencyInjection.Interfaces.0.0.1\lib\netstandard2.0\DEAD.DependencyInjection.Interfaces.dll</HintPath>
@@ -43,7 +43,7 @@
       <HintPath>..\packages\DEAD.Logging.Interfaces.0.0.1\lib\netstandard1.6\DEAD.Logging.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="DEAD.ServiceAndRemoting.Interfaces, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DEAD.ServiceAndRemoting.Interfaces.0.0.1\lib\netstandard1.6\DEAD.ServiceAndRemoting.Interfaces.dll</HintPath>
+      <HintPath>..\packages\DEAD.ServiceAndRemoting.Interfaces.0.0.1\lib\netstandard2.0\DEAD.ServiceAndRemoting.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>

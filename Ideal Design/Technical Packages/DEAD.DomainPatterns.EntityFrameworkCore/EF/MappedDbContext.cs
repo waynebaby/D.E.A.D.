@@ -13,7 +13,7 @@ namespace DEAD.DomainPatterns.EFCore
 	public class MappedDbContext<T> : DbContext, IIoCContexted
 	{
 		public MappedDbContext(string nameOrConnectionString)
-			: base(nameOrConnectionString)
+			: base()
 		{
 
 
