@@ -36,8 +36,9 @@ namespace DEAD.DomainPatterns.EFCore
             _context = context;
         }
 
-
-
+        public EFUnitOfWork()
+        {
+        }
 
         public ITransaction BeginTransaction()
         {
@@ -46,7 +47,7 @@ namespace DEAD.DomainPatterns.EFCore
 
         public ITransaction BeginTransaction(System.Data.IsolationLevel level)
         {
-            return new EFTransaction(this, level);
+            throw new NotSupportedException($"{nameof(System.Data.IsolationLevel)} is Not Supported in EF core in current version ({typeof(EFTransaction).Assembly.ImageRuntimeVersion})");
         }
         public virtual IRepository<T> GetRepository<T>() where T : class
         {
@@ -86,34 +87,34 @@ namespace DEAD.DomainPatterns.EFCore
                 OnSubmit();
                 return await Context.SaveChangesAsync(cancellationToken);
             }
-//            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-//            {
-//                var sb = new StringBuilder();
+            //            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            //            {
+            //                var sb = new StringBuilder();
 
-//                sb.AppendLine(ex.ToString());
-//                foreach (var item in ex.EntityValidationErrors)
-//                {
-//                    sb.AppendLine("-----------");
-//                    sb.AppendLine(item.Entry.Entity.GetType().Name);
-//                    foreach (var item2 in item.ValidationErrors)
-//                    {
-//                        sb.AppendFormat("{0}:{1}", item2.PropertyName, item2.ErrorMessage).AppendLine();
-//                    }
-//                }
+            //                sb.AppendLine(ex.ToString());
+            //                foreach (var item in ex.EntityValidationErrors)
+            //                {
+            //                    sb.AppendLine("-----------");
+            //                    sb.AppendLine(item.Entry.Entity.GetType().Name);
+            //                    foreach (var item2 in item.ValidationErrors)
+            //                    {
+            //                        sb.AppendFormat("{0}:{1}", item2.PropertyName, item2.ErrorMessage).AppendLine();
+            //                    }
+            //                }
 
-//                var er = sb.ToString();
-
-
-//#if DEBUG
-//                throw new Exception(er, ex);
-
-//#else
-//				throw ;
-
-//#endif
+            //                var er = sb.ToString();
 
 
-//            }
+            //#if DEBUG
+            //                throw new Exception(er, ex);
+
+            //#else
+            //				throw ;
+
+            //#endif
+
+
+            //            }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
@@ -400,7 +401,7 @@ namespace DEAD.DomainPatterns.EFCore
             return list;
         }
 
-   
+
 
 
 
@@ -440,7 +441,12 @@ namespace DEAD.DomainPatterns.EFCore
 
         }
 
-        public IEnumerable<TEntity> SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters)
+        IEnumerable<TEntity> IEFUnitOfWork.SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<TEntity> IUnitOfWork.SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters)
         {
             throw new NotImplementedException();
         }

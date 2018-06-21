@@ -193,4 +193,5 @@ ModelManifest.xml
 /Ideal Design/Development Projects/packages/*
 /Ideal Design/Technical Packages/packages/*                                      
 DEADExport/
-TechPackagesOutput/
+
+.vs

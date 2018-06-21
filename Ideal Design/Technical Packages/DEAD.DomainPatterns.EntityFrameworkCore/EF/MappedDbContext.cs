@@ -10,32 +10,49 @@ using System.Threading.Tasks;
 
 namespace DEAD.DomainPatterns.EFCore
 {
-	public class MappedDbContext<T> : DbContext, IIoCContexted
-	{
-		public MappedDbContext(string nameOrConnectionString)
-			: base()
-		{
+    public class MappedDbContext<T> : DbContext, IIoCContexted
+    {
+        public MappedDbContext(string nameOrConnectionString)
+            : base()
+        {
 
 
-		}																   
+        }
 
-		protected override void OnModelCreating(DbModelBuilder modelBuilder)
-		{
-			
-			Assembly loadingAssembly = this.GetIoCManager().DefualtContainer.Resolve<Assembly>(RegisterModelConfiguresName);
-			modelBuilder.Configurations.AddFromAssembly(loadingAssembly);
-			base.OnModelCreating(modelBuilder);
-		}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
 
-		static readonly string _RegisterModelConfiguresName = "For" + typeof(MappedDbContext<T>).FullName;
-		public static string RegisterModelConfiguresName
-		{
-			get { return _RegisterModelConfiguresName; }
-		}
+            Assembly loadingAssembly = this.GetIoCManager().DefualtContainer.Resolve<Assembly>(RegisterModelConfiguresName);
 
-		public IIoCContext IoCContext
-		{
-			get; set;
-		}
-	}
+            var configurations = loadingAssembly.GetTypes()
+                .Where(t => t.GetInterfaces().Any(
+                    it =>
+                        it.IsInterface &&
+                        it.IsGenericType &&
+                        it.GenericTypeArguments.Length == 1 &&
+                        (it.GetConstructor(Array.Empty<Type>())?.IsPublic ?? false) &&
+                        it.IsAssignableFrom(typeof(IEntityTypeConfiguration<>)
+                            .MakeGenericType(it.GenericTypeArguments[0]))));
+
+            foreach (var config in configurations)
+            {
+                dynamic instance = System.Activator.CreateInstance(config);
+                modelBuilder.ApplyConfiguration(instance);
+            }
+            base.OnModelCreating(modelBuilder);
+        }
+
+
+
+        public static string RegisterModelConfiguresName => "For" + typeof(MappedDbContext<T>).FullName;
+
+
+        public IIoCContext IoCContext
+        {
+            get; set;
+        }
+
+
+
+    }
 }

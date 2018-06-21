@@ -57,6 +57,8 @@
  cd $(SolutionDir) 
 
 "$(TargetDir)$(TargetFileName)" gatherpackages  . .\TechPackagesOutput
-</PostBuildEvent>
+cd
+nuget sources Remove -Name "D.E.A.D." 
+nuget sources Add -Name "D.E.A.D." -Source ". \TechPackagesOutput"</PostBuildEvent>
   </PropertyGroup>
 </Project>

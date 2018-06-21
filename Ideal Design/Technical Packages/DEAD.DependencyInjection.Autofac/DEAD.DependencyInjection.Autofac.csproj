@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.6.1" />
+    <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="DEAD.DependencyInjection" Version="0.0.1" />
   </ItemGroup>
 

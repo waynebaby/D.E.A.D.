@@ -1,13 +1,13 @@
-using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Unity;
+using Unity.Injection;
+using Unity.Lifetime;
 
 namespace DEAD.DependencyInjection.Implementations
 {
-	public class UnityIoCContainer : IoCContainerBase
+    public class UnityIoCContainer : IoCContainerBase
 	{
 	  
 		public IUnityContainer UnityContainer { get; protected set; } = new UnityContainer();

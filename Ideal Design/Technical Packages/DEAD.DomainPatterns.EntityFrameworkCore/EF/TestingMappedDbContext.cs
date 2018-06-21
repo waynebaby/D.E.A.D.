@@ -1,7 +1,8 @@
 using DEAD.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -19,11 +20,12 @@ namespace DEAD.DomainPatterns.EFCore
 
 		}
 
-		protected override void OnModelCreating(DbModelBuilder modelBuilder)
-		{
-			Database.SetInitializer<TestingMappedDbContext<T>>(new DropCreateDatabaseAlways<TestingMappedDbContext<T>>());
-			base.OnModelCreating(modelBuilder);
-		}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+            base.OnModelCreating(modelBuilder);
+        }
 
-	}
+    }
 }

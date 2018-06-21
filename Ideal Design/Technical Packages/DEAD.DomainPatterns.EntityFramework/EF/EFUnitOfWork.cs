@@ -410,11 +410,7 @@ namespace DEAD.DomainPatterns.EFCore
 			return list;
 		}
 
-		public IEnumerable<TEntity> SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters)
-		{
 
-			return _context.Database.SqlQuery<TEntity>(sqlQuery, parameters).AsQueryable();
-		}
 
 
 
@@ -454,59 +450,68 @@ namespace DEAD.DomainPatterns.EFCore
 
 		}
 
+         IEnumerable<TEntity>  IUnitOfWork.SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters)
+   {
 
+            return _context.Database.SqlQuery<TEntity>(sqlQuery, parameters).AsQueryable();
+        }
 
+        IEnumerable<TEntity> IEFUnitOfWork.SqlQuery<TEntity>(string sqlQuery, params DbParameter[] parameters)
+        {
 
-		//public PagedCollection<TEntity> SqlQueryPaged<TEntity>(string sqlQuery, DbParameter[] parameters, List<SortDirection> orderBy, int pageIndex, int pageSize, int? totalCount = default(int?))
-		//{
-		//	List<TEntity> items = null;
-		//	string sqlTemplate = @" ORDER BY {0} OFFSET {1} ROWS FETCH NEXT {2} ROWS ONLY";
-		//	StringBuilder sbSort = new StringBuilder();
-		//	if (orderBy != null)
-		//	{
-		//		int i = 0;
-		//		foreach (var item in orderBy)
-		//		{
-		//			if (i != 0) sbSort.Append(", ");
+            return _context.Database.SqlQuery<TEntity>(sqlQuery, parameters).AsQueryable();
+        }
 
-		//			//sbSort.Append(item.Member);
-		//			sbSort.Append(SecurityHelper.FilterSqlInjectChart(item.Member));
+        //public PagedCollection<TEntity> SqlQueryPaged<TEntity>(string sqlQuery, DbParameter[] parameters, List<SortDirection> orderBy, int pageIndex, int pageSize, int? totalCount = default(int?))
+        //{
+        //	List<TEntity> items = null;
+        //	string sqlTemplate = @" ORDER BY {0} OFFSET {1} ROWS FETCH NEXT {2} ROWS ONLY";
+        //	StringBuilder sbSort = new StringBuilder();
+        //	if (orderBy != null)
+        //	{
+        //		int i = 0;
+        //		foreach (var item in orderBy)
+        //		{
+        //			if (i != 0) sbSort.Append(", ");
 
-		//			if (item.Direction == Direction.Descending)
-		//			{
-		//				sbSort.Append(" ").Append("DESC");
-		//			}
-		//			i++;
-		//		}
-		//	}
+        //			//sbSort.Append(item.Member);
+        //			sbSort.Append(SecurityHelper.FilterSqlInjectChart(item.Member));
 
-		//	string sql = sqlQuery + string.Format(sqlTemplate, sbSort.ToString(), ((pageIndex - 1) * pageSize), pageSize);
+        //			if (item.Direction == Direction.Descending)
+        //			{
+        //				sbSort.Append(" ").Append("DESC");
+        //			}
+        //			i++;
+        //		}
+        //	}
 
-		//	items = _context.Database.SqlQuery<TEntity>(sql, parameters).ToList();
+        //	string sql = sqlQuery + string.Format(sqlTemplate, sbSort.ToString(), ((pageIndex - 1) * pageSize), pageSize);
 
-		//	if (!totalCount.HasValue)
-		//	{
-		//		sqlTemplate = @"SELECT COUNT(1) AS TotalCount FROM ({0}) AS TCount";
-		//		sql = string.Format(sqlTemplate, sqlQuery);
+        //	items = _context.Database.SqlQuery<TEntity>(sql, parameters).ToList();
 
-		//		SqlParameter[] newParamters = new SqlParameter[0];
-		//		if (parameters != null && parameters.Length > 0)
-		//		{
-		//			List<SqlParameter> paraList = null;
-		//			paraList = new List<SqlParameter>();
-		//			foreach (SqlParameter item in parameters)
-		//			{
-		//				SqlParameter parm = new SqlParameter(item.ParameterName, item.Value);
-		//				paraList.Add(parm);
-		//			}
+        //	if (!totalCount.HasValue)
+        //	{
+        //		sqlTemplate = @"SELECT COUNT(1) AS TotalCount FROM ({0}) AS TCount";
+        //		sql = string.Format(sqlTemplate, sqlQuery);
 
-		//			newParamters = paraList.ToArray();
-		//		}
+        //		SqlParameter[] newParamters = new SqlParameter[0];
+        //		if (parameters != null && parameters.Length > 0)
+        //		{
+        //			List<SqlParameter> paraList = null;
+        //			paraList = new List<SqlParameter>();
+        //			foreach (SqlParameter item in parameters)
+        //			{
+        //				SqlParameter parm = new SqlParameter(item.ParameterName, item.Value);
+        //				paraList.Add(parm);
+        //			}
 
-		//		totalCount = _context.Database.SqlQuery<int>(sql, newParamters).First();
-		//	}
+        //			newParamters = paraList.ToArray();
+        //		}
 
-		//	return new PagedCollection<TEntity> { PageIndex = pageIndex, PageSize = pageSize, Items = items, TotalItems = totalCount.Value };
-		//}
-	}
+        //		totalCount = _context.Database.SqlQuery<int>(sql, newParamters).First();
+        //	}
+
+        //	return new PagedCollection<TEntity> { PageIndex = pageIndex, PageSize = pageSize, Items = items, TotalItems = totalCount.Value };
+        //}
+    }
 }

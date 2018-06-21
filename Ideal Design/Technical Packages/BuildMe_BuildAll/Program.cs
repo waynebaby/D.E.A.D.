@@ -71,7 +71,7 @@ namespace BuildMe_BuildAll
                                             Console.WriteLine($"Operation cancelled by user.");
                                         }
 
-                                        if (Directory.GetParent(file).Name.StartsWith("DEAD."))
+                                        if (Directory.GetParent(file).Parent.Name.StartsWith("DEAD."))
                                         {
                                             var destFile = Path.Combine(target, Path.GetFileName(file));
                                             Console.WriteLine($"{file} is moving to {destFile}");

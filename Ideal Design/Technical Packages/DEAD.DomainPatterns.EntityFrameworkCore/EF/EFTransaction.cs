@@ -20,11 +20,11 @@ namespace DEAD.DomainPatterns.EFCore
 			_trans = uow.Context.Database.BeginTransaction();
 		}
 
-		public EFTransaction(EFUnitOfWork uow, System.Data.IsolationLevel level)
-		{
-			_uow = uow;
-			_trans = uow.Context.BeginTransaction(level);
-		}
+		//public EFTransaction(EFUnitOfWork uow, System.Data.IsolationLevel level)
+		//{
+		//	_uow = uow;
+		//	_trans = uow.Context.Database.BeginTransaction(level);
+		//}
 
 
 		public IUnitOfWork UnitOfWork
