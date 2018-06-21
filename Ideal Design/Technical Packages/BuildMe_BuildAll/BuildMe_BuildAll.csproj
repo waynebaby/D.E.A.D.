@@ -54,11 +54,15 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
- cd $(SolutionDir) 
 
 "$(TargetDir)$(TargetFileName)" gatherpackages  . .\TechPackagesOutput
 cd
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+ cd $(SolutionDir) 
 nuget sources Remove -Name "D.E.A.D." 
-nuget sources Add -Name "D.E.A.D." -Source ". \TechPackagesOutput"</PostBuildEvent>
+nuget sources Add -Name "D.E.A.D." -Source  "$(SolutionDir)TechPackagesOutput"</PreBuildEvent>
   </PropertyGroup>
 </Project>
